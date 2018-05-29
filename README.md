@@ -4,7 +4,7 @@
 
 1. [Using This Package In A Project](#using-this-package-in-a-project)
 2. [Folder Structure](#folder-structure)
-3. [SASS Docs]()
+3. [SASS Docs](https://ernieayala.github.io/teq-tonic/)
 
 
 ## Using This Package In A Project
