@@ -12,13 +12,13 @@
 This project is configured for easy use during development and as a package when included in your project.
 
 ```sass
-@import 'teq-tonic/_utils.scss';
+@import 'teq-tonic/utils/_core.scss';
 ```
 
 You can also access the basic root styles by simply specifying:
 
 ```sass
-@import 'teq-tonic/_root.scss';
+@import 'teq-tonic/utils/_root.scss';
 ```
 
 ## Folder Structure
