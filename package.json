@@ -1,7 +1,7 @@
 {
 	"title": "Teq-Tonic Tools",
 	"name": "teq-tonic",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"private": false,
 	"description": "A Neat Sass Tool Set",
 	"homepage": "",
@@ -21,8 +21,7 @@
 	"scripts": {
 		"clean": "rimraf classes functions helpers placeholders variables _classes.scss _utils.scss _root.scss",
 		"cleanInstall": "rm -rf ./node_modules ./package-lock.json && npm i",
-		"postinstall": "node postinstall",
-		"docs": "sassdoc src"
+		"docs": "sassdoc utils"
 	},
 	"repository": {
 		"type": "git",

@@ -8,16 +8,6 @@ node_temp/
 node_modules/
 package-lock.json
 
-# ignore installed untils
-/classes
-/functions
-/helpers
-/placeholders
-/variables
-/_classes.scss
-/_root.scss
-/_utils.scss
-
 # ignore composer vendor directory
 /build
 /clean
