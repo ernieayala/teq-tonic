@@ -1,0 +1,22 @@
+///
+/// Variable map for predefined component names.
+/// @group support
+/// @access public
+///
+
+$_namespace-component: (
+	"sample": ".sample",
+	"util": ".util"
+) !global;
+
+///
+/// Variable map for predefined modifier names.
+/// @group support
+/// @access public
+///
+
+$_namespace-mod: (
+	"is": ".is",
+	"has": ".has",
+	"mod": ".mod"
+) !global;

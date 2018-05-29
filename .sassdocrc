@@ -1,0 +1,15 @@
+{
+	"autofill": [],
+	"dest": "./docs",
+	"display": {
+		"watermark": false
+	},
+	"groups": {
+		"undefined": "General",
+		"support": "Utils Support",
+		"property": "Helpers",
+		"shadow-dom": "ShadowDOM"
+	},
+	"package": "./package.json",
+	"theme": "default"
+}

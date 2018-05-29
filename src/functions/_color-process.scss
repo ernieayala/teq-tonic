@@ -1,0 +1,80 @@
+///
+/// Gets the rgba values from a hex value in a map of colors.
+/// @name rgba-map
+/// @group support
+/// @access private
+/// @param {map} $colors [null] - A palette of colors.
+/// @example scss
+///   $colors-rgba: rgba-map($palette);
+///
+
+@function rgba-map($colors: null) {
+	$color-map: ();
+
+	@each $color in $colors {
+		$color-name: nth($color, 1);
+		$color-rgb: #{red(nth($color, 2)), green(nth($color, 2)), blue(nth($color, 2))};
+		$color-map: map-merge($color-map, ($color-name: $color-rgb));
+	}
+
+	@return $color-map;
+}
+
+///
+/// Color function that calls to the `$_palette-default` map by default.
+/// @name color
+/// @group property
+/// @param {string} $color [null] - Choose a color from a color palette.
+/// @param {number} $opacity [1] - Change the opacity of the color.
+/// @param {map} $palette [$_palette-default] - Change which palette the color call is to.
+/// @param {boolean} $css-variables [true] - Choose if it's a css variable or rgba value.
+/// @example scss
+///   background: color("green-50");
+///   color: color("gray-600", 0.8);
+///
+///   // output
+///   background: rgba(var(--color-green-50), 1);
+///   color: rgba(var(--color-gray-600), 0.8);
+/// @require {variable} $_palette-default
+///
+
+@function color($color: null, $opacity: 1, $palette: $_palette-default, $css-variables: true) {
+	@if not map-has-key($palette, $color) {
+		@warn "No color found for '#{$color}'.";
+		@return null;
+	}
+
+	$css-var: "var(--color-" + $color + ")";
+
+	@if $css-variables {
+		@return #{rgba(unquote($css-var), $opacity)};
+	} @else {
+		@return #{rgba(map-get($_palette-default, $color), $opacity)};
+	}
+}
+
+///
+/// Shadow function that calls to the `$_palette-default` map by default.
+///
+/// _This is a Safari `box-shadow` fix. Safari currently does not support css variables being used for the `box-shadow` property._
+/// @name shadow
+/// @group property
+/// @param {string} $color [null] - Choose a color from a color palette.
+/// @param {number} $opacity [1] - Change the opacity of the color.
+/// @param {map} $palette [$_palette-default] - Change which palette the color call is to.
+/// @example scss
+///   box-shadow: shadow("charcoal-500") 0.1rem 0.1rem 0.5rem;
+///
+///   // output
+///   box-shadow: rgba(41, 62, 64, 1) 0.1rem 0.1rem 0.5rem;
+/// @require {variable} $_palette-default
+///
+
+@function shadow($color: null, $opacity: 1, $palette: $_palette-default) {
+	@if not map-has-key($palette, $color) {
+		@warn "No color found for '#{$color}'. Property omitted.";
+		@return null;
+	}
+
+	@return #{rgba(map-get($_palette-default, $color), $opacity)}
+}

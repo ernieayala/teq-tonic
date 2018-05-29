@@ -1,0 +1,43 @@
+///
+/// Outputs correct child elements when using inside of a host mixin.
+/// @name child
+/// @group shadow-dom
+/// @param {map} $selectors [()] - Input a list of selectors.
+/// @example scss
+///   @include component("alert") {
+///     @include child("container") {
+///     }
+///   }
+///
+///   // output
+///   .sample-alert__container
+/// @require {function} get-setup
+/// @require {mixin} toggle
+///
+
+@mixin child($selectors: ()) {
+	// toggle
+	@if not get-setup("child") {
+		@include toggle((
+			"child": true,
+			"default-selector-stored": get-setup("default-selector")));
+	}
+
+	// create child selector
+	$child-selector: "";
+	@each $selector in $selectors {
+		$i: index($selectors, $selector);
+		$child-selector: $child-selector + get-setup("child-prefix") + nth($selectors, $i);
+	};
+
+	// output
+	@if not get-setup("host") and not get-setup("mod") {
+		@include toggle(("default-selector": get-setup("default-selector") + $child-selector));
+		&#{$child-selector} { @content; }
+	}
+
+	// toggle
+	@include toggle((
+		"child": false,
+		"default-selector": get-setup("default-selector-stored")));
+}

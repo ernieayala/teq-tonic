@@ -1,0 +1,34 @@
+///
+/// Transition function that calls to the `$_default-transitions` map.
+/// @name transition
+/// @group property
+/// @param {string} $props [null] - The properties that need a transition applied.
+/// @param {string} $transition [null] - The transition being applied.
+/// @param {string} $time [time("base")] - The time being applied.
+/// @example
+///   transition: transition(opacity, "link");
+///   transition: transition(opacity, "shift", time("slow"));
+///
+///   // output
+///   transition: opacity 0.3s cubic-bezier(0.075, 0.820, 0.165, 1.000);
+///   transition: opacity 0.5s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+/// @require {variable} $_default-animation-time
+/// @require {variable} $_default-transitions
+///
+
+@function transition($props: null, $transition: null, $time: time("base")) {
+	$result: ();
+
+	@if not map-has-key($_default-transitions, $transition) {
+		@warn "No transition found for '#{$transition}' in $_default-transitions map. Property omitted.";
+		@return null;
+	}
+
+	$trans: map-get($_default-transitions, $transition);
+
+	@each $prop in $props {
+		$result: append($result, $prop #{$time} $trans, comma);
+	}
+
+	@return #{$result};
+}

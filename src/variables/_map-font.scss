@@ -1,0 +1,31 @@
+///
+/// Variable map for font sizes.
+/// @group support
+/// @access public
+///
+
+$_font-sizes: (
+	"xxxl": 2.4rem,
+	"xxl": 2rem,
+	"xl": 1.8rem,
+	"lg": 1.6rem,
+	"md": 1.4rem,
+	"sm": 1.2rem,
+	"xs": 1rem,
+	"xxs": 0.8rem,
+	"default": 1.4rem
+) !global;
+
+///
+/// Variable map for font family/weight.
+/// @group support
+/// @access public
+///
+
+$_font-weights: (
+	"regular": "SourceSansPro",
+	"light": "SourceSansProLight",
+	"semibold": "SourceSansProSemibold",
+	"bold": "SourceSansProBold",
+	"default": "SourceSansPro"
+) !global;

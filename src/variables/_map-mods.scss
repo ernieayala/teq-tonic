@@ -1,0 +1,13 @@
+///
+/// Variable map for class modifiers.
+/// @group support
+/// @access public
+///
+
+$_mods: (
+	"all": false,
+	"sample": (
+		"all": false,
+		"one": false
+	)
+) !global;

@@ -1,0 +1,47 @@
+///
+/// Variable map for setup namespaces.
+/// @group support
+/// @access private
+///
+
+$_setup-namespace: (
+	"current-component": "",
+	"default-selector": "",
+	"default-selector-stored": "",
+	"host-element": "",
+	"host-selector": "",
+	"host-selector-stored": "",
+	"mod-selector": "",
+	"mod-selector-stored": ""
+);
+
+///
+/// Variable map for setup toggles.
+/// @group support
+/// @access private
+///
+
+$_setup-toggles: (
+	"host": false,
+	"child": false,
+	"nested": false,
+	"has": false,
+	"is": false,
+	"mod": false
+);
+
+///
+/// Variable map that compiles other setup maps.
+/// @group support
+/// @access private
+/// @require {function} map-collect
+/// @require {variable} $_setup-namespace
+/// @require {variable} $_setup-toggles
+/// @require {variable} $_settings-prefixes
+///
+
+$_setup: map-collect(
+	$_setup-namespace,
+	$_setup-toggles,
+	$_settings-prefixes
+) !global;

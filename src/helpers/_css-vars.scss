@@ -1,0 +1,30 @@
+///
+/// Create an output of css variables from a color palette.
+/// @name css-vars
+/// @param {map} $palette [null] - A palette of colors.
+/// @example scss
+///   :root {
+///     @include css-vars($_palette-default);
+///   }
+///
+///   // output
+///   :root {
+///     --color-black: 0, 0, 0;
+///     --color-white: 255, 255, 255;
+///     --color-blue-50: 236, 241, 252;
+///     ect...
+///   }
+/// @require {function} rgba-map
+///
+
+@mixin css-vars($palette: null) {
+	$colors-rgba: rgba-map($palette);
+
+	@each $color in $colors-rgba {
+		$i: index($colors-rgba, $color);
+		$color-name: nth($color, 1);
+		$color-value: nth($color, 2);
+
+		--color-#{$color-name}: #{$color-value};
+	}
+}

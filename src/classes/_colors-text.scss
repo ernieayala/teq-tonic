@@ -1,0 +1,9 @@
+
+
+@each $color in $_palette-util {
+	$color-name: nth($color, 1);
+
+	#{class("util") + "-color-" + $color-name} {
+		color: color($color-name) !important;
+	}
+}

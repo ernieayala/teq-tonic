@@ -1,0 +1,7 @@
+
+
+@each $layer in $_default-z-index {
+	#{class("util") + "-z-" + nth($layer, 1)} {
+		z-index: nth($layer, 2) !important;
+	}
+}

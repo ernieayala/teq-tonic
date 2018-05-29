@@ -1,0 +1,21 @@
+
+
+#{class("util") + "-position-absolute"} {
+	position: absolute !important;
+}
+
+#{class("util") + "-position-fixed"} {
+	position: fixed !important;
+}
+
+#{class("util") + "-position-relative"} {
+	position: relative !important;
+}
+
+#{class("util") + "-position-sticky"} {
+	position: sticky !important;
+}
+
+#{class("util") + "-position-static"} {
+	position: static !important;
+}
