@@ -23,6 +23,14 @@ $_settings-context: ( "all" ) !global;
 $_settings-mods: ( "all": true ) !global;
 
 ///
+/// Variable map for component namespace settings.
+/// @group support
+/// @access public
+///
+
+$_settings-component: () !global;
+
+///
 /// Variable map for prefix namespace settings.
 /// @group support
 /// @access public

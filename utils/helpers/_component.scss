@@ -18,6 +18,10 @@
 ///
 
 @mixin component($component: null, $options: null) {
+	// update settings
+	$_setup: map-merge($_setup, $_settings-prefixes) !global;
+	$_namespace-component: map-merge($_namespace-component, $_settings-component) !global;
+
 	// set up options
 	$options-defaults: ("host": false, "host-element": null, "prefix": get-setup("prefix"));
 	$options: update($options-defaults, $options);
