@@ -24,4 +24,4 @@ You can also access the basic root styles by simply specifying:
 ## Folder Structure
 
 * [`docs`](./docs) - Sass function, mixin, and variable documentation.
-* [`src`](./src) - Source files being developed. This folder is excluded when installed as a package to reduce confusion.
+* [`src`](./utils) - Source files being developed.
