@@ -2,18 +2,18 @@
 /// Overwrites default variabls.
 ///
 /// **Available Variables**
-/// animation-time
-/// border-radius
-/// color
-/// font-sizes
-/// font-weights
-/// media-queries
-/// mods
-/// namespace
-/// opacity
-/// space
-/// transitions
-/// z-index
+/// `animation-time`
+/// `border-radius`
+/// `color`
+/// `font-sizes`
+/// `font-weights`
+/// `media-queries`
+/// `mods`
+/// `namespace`
+/// `opacity`
+/// `space`
+/// `transitions`
+/// `z-index`
 /// @name settings
 /// @group support
 /// @access public
@@ -24,7 +24,6 @@
 ///       "base": 0.5rem
 ///     )
 ///   );
-/// @require {variable} $_palette-default
 /// @require {variable} $_default-animation-time
 /// @require {variable} $_default-border-radius
 /// @require {variable} $_default-media-queries
@@ -36,6 +35,7 @@
 /// @require {variable} $_font-weights
 /// @require {variable} $_mods
 /// @require {variable} $_namespace-component
+/// @require {variable} $_palette-default
 ///
 
 @mixin settings($values: null) {
