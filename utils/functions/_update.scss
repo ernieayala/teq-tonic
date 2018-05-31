@@ -27,8 +27,9 @@
 		$i: index($values, $value);
 
 		@if $i and $i + 1 <= length($values) {
-			$temp-map: (nth($values, $i): nth($values, $i + 1));
-			$update: map-merge($update, $temp-map);
+			$key: nth($values, $i);
+			$value: nth($values, $i + 1);
+			$update: map-merge($update, ($key: $value));
 		}
 	}
 

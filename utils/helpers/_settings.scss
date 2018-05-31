@@ -1,0 +1,66 @@
+///
+/// Overwrites default variabls.
+///
+/// **Available Variables**
+/// animation-time
+/// border-radius
+/// color
+/// font-sizes
+/// font-weights
+/// media-queries
+/// mods
+/// namespace
+/// opacity
+/// space
+/// transitions
+/// z-index
+/// @name settings
+/// @group support
+/// @access public
+/// @param {array} $values [null] - A list of values.
+/// @example scss
+///   @include settings(
+///     "space" (
+///       "base": 0.5rem
+///     )
+///   );
+/// @require {variable} $_palette-default
+/// @require {variable} $_default-animation-time
+/// @require {variable} $_default-border-radius
+/// @require {variable} $_default-media-queries
+/// @require {variable} $_default-opacity
+/// @require {variable} $_default-space
+/// @require {variable} $_default-transitions
+/// @require {variable} $_default-z-index
+/// @require {variable} $_font-sizes
+/// @require {variable} $_font-weights
+/// @require {variable} $_mods
+/// @require {variable} $_namespace-component
+///
+
+@mixin settings($values: null) {
+	$i: 0;
+	$update: ();
+
+	@each $value in $values {
+		$i: index($values, $value);
+
+		@if $i and $i + 1 <= length($values) {
+			$key: nth($values, $i);
+			$value: nth($values, $i + 1);
+
+			@if $key == "animation-time" { $_default-animation-time: map-merge($_default-animation-time, $value) !global; }
+			@if $key == "border-radius" { $_default-border-radius: map-merge($_default-border-radius, $value) !global; }
+			@if $key == "color" { $_palette-default: map-merge($_palette-default, $value) !global; }
+			@if $key == "font-sizes" { $_font-sizes: map-merge($_font-sizes, $value) !global; }
+			@if $key == "font-weights" { $_font-weights: map-merge($_font-weights, $value) !global; }
+			@if $key == "media-queries" { $_default-media-queries: map-merge($_default-media-queries, $value) !global; }
+			@if $key == "mods" { $_mods: map-merge($_mods, $value) !global; }
+			@if $key == "namespace" { $_namespace-component: map-merge($_namespace-component, $value) !global; }
+			@if $key == "opacity" { $_default-opacity: map-merge($_default-opacity, $value) !global; }
+			@if $key == "space" { $_default-space: map-merge($_default-space, $value) !global; }
+			@if $key == "transitions" { $_default-transitions: map-merge($_default-transitions, $value) !global; }
+			@if $key == "z-index" { $_default-z-index: map-merge($_default-z-index, $value) !global; }
+		}
+	}
+}
