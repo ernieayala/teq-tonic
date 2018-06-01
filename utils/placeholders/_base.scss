@@ -25,8 +25,4 @@
 	:root {
 		@include css-vars($_palette-default);
 	}
-
-	@if content-exists() {
-		@content;
-	}
 }
