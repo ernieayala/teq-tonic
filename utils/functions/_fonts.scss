@@ -24,7 +24,7 @@
 		@return null;
 	}
 
-	@return map-get($_font-sizes, $font) map-get($_font-weights, $weight), "Helvetica Neue", "Helvetica", Arial, sans-serif;
+	@return map-get($_font-sizes, $font) map-get($_font-weights, $weight), sans-serif;
 }
 
 ///
@@ -68,5 +68,5 @@
 		@return null;
 	}
 
-	@return map-get($_font-weights, $weight), "Helvetica Neue", "Helvetica", Arial, sans-serif;
+	@return map-get($_font-weights, $weight), sans-serif;
 }

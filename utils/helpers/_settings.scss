@@ -53,7 +53,7 @@
 			@if $key == "border-radius" { $_default-border-radius: map-merge($_default-border-radius, $value) !global; }
 			@if $key == "color" { $_palette-default: map-merge($_palette-default, $value) !global; }
 			@if $key == "font-sizes" { $_font-sizes: map-merge($_font-sizes, $value) !global; }
-			@if $key == "font-weights" { $_font-weights: map-merge($_font-weights, $value) !global; }
+			@if $key == "font-family" { $_font-family: map-merge($_font-weights, $value) !global; }
 			@if $key == "media-queries" { $_default-media-queries: map-merge($_default-media-queries, $value) !global; }
 			@if $key == "mods" { $_mods: map-merge($_mods, $value) !global; }
 			@if $key == "namespace" { $_namespace-component: map-merge($_namespace-component, $value) !global; }

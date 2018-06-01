@@ -1,7 +1,7 @@
 {
 	"title": "Teq-Tonic Tools",
 	"name": "teq-tonic",
-	"version": "0.0.8",
+	"version": "0.0.9",
 	"private": false,
 	"description": "A Neat Sass Tool Set",
 	"homepage": "",
@@ -11,11 +11,14 @@
 		"SCSS"
 	],
 	"readme": "./README.md",
+	"dependencies": {
+		"sass-module-importer": "1.4.0"
+	},
 	"devDependencies": {
 		"colors": "1.3.0",
 		"fs-extra": "6.0.1",
 		"rimraf": "2.6.2",
-		"sass-module-importer": "1.4.0",
+		"teq-tonic": "*",
 		"xml2js": "0.4.19"
 	},
 	"scripts": {

@@ -1,0 +1,32 @@
+///
+/// Base css include.
+/// @name base
+/// @example scss
+///   @include base;
+///
+
+@mixin base {
+	* {
+		box-sizing: border-box;
+	}
+
+	html {
+		font-size: 62.5%;
+	}
+
+	html,
+	body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+
+	// main color palette
+	:root {
+		@include css-vars($_palette-default);
+	}
+
+	@if content-exists() {
+		@content;
+	}
+}
