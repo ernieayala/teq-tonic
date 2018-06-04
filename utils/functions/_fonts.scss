@@ -1,5 +1,5 @@
 ///
-/// Font function that selects font sizes from `$_font-sizes` and the font family/weight from `$_font-weights`.
+/// Font function that selects font sizes from `$_font-sizes` and the font family/weight from `$_font-family`.
 /// @name font
 /// @group property
 /// @param {string} $font [null] - Choose a font size.
@@ -12,19 +12,19 @@
 ///   font: 1.4rem "SourceSansPro", "Helvetica Neue", "Helvetica", Arial, sans-serif;
 ///   font: 1.4rem "SourceSansProSemibold", "Helvetica Neue", "Helvetica", Arial, sans-serif;
 /// @require {variable} $_font-sizes
-/// @require {variable} $_font-weights
+/// @require {variable} $_font-family
 ///
 
 @function font($font: null, $weight: "default") {
 	@if not map-has-key($_font-sizes, $font) {
 		@warn "No font size found for '#{$font}' in $_font-sizes map. Property omitted.";
 		@return null;
-	} @else if not map-has-key($_font-weights, $weight) {
-		@warn "No font weight found for '#{$weight}' in $_font-weights map. Property omitted.";
+	} @else if not map-has-key($_font-family, $weight) {
+		@warn "No font weight found for '#{$weight}' in $_font-family map. Property omitted.";
 		@return null;
 	}
 
-	@return map-get($_font-sizes, $font) map-get($_font-weights, $weight), sans-serif;
+	@return map-get($_font-sizes, $font) map-get($_font-family, $weight), sans-serif;
 }
 
 ///
@@ -50,7 +50,7 @@
 }
 
 ///
-/// Font family function that selects the font family/weight from `$_font-weights`.
+/// Font family function that selects the font family/weight from `$_font-family`.
 /// @name font-family
 /// @group property
 /// @param {string} $weight [default] - Choose a font family/weight.
@@ -59,14 +59,14 @@
 ///
 ///   // output
 ///   font-family: "SourceSansProSemibold", "Helvetica Neue", "Helvetica", Arial, sans-serif;
-/// @require {variable} $_font-weights
+/// @require {variable} $_font-family
 ///
 
 @function font-family($weight: null) {
-	@if not map-has-key($_font-weights, $weight) {
-		@warn "No font weight found for '#{$weight}' in $_font-weights map. Property omitted.";
+	@if not map-has-key($_font-family, $weight) {
+		@warn "No font weight found for '#{$weight}' in $_font-family map. Property omitted.";
 		@return null;
 	}
 
-	@return map-get($_font-weights, $weight), sans-serif;
+	@return map-get($_font-family, $weight), sans-serif;
 }

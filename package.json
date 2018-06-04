@@ -1,7 +1,7 @@
 {
 	"title": "Teq-Tonic Tools",
 	"name": "teq-tonic",
-	"version": "0.0.10",
+	"version": "0.0.11",
 	"private": false,
 	"description": "A Neat Sass Tool Set",
 	"homepage": "",
@@ -18,7 +18,6 @@
 		"colors": "1.3.0",
 		"fs-extra": "6.0.1",
 		"rimraf": "2.6.2",
-		"teq-tonic": "*",
 		"xml2js": "0.4.19"
 	},
 	"scripts": {
