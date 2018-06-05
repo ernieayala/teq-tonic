@@ -9,19 +9,43 @@
 
 ## Using This Package In A Project
 
-This project is configured for easy use during development and as a package when included in your project.
+Install [`teq-tonic`](https://www.npmjs.com/package/teq-tonic) into your project.
 
-```sass
-@import 'teq-tonic/utils/_core.scss';
+``` 
+npm i teq-tonic
 ```
 
-You can also access the basic root styles by simply specifying:
+Import the core utils file into your project.
 
 ```sass
-@import 'teq-tonic/utils/_root.scss';
+@import './teq-tonic/utils/core';
+```
+
+Define settings for your project.
+View the [`settings`](https://ernieayala.github.io/teq-tonic/#mixin-settings) mixin to view what can be customized. 
+
+``` sass
+@include settings(
+	"namespace" (
+		"main": ".main",
+		"hero": ".hero",
+		"nav": ".nav"
+	)
+	"font-sizes" (
+		"xl": 3rem,
+    "hero": 2rem
+	)
+	"font-family" (
+		"default": "IBM Plex Sans"
+	)
+);
 ```
 
 ## Folder Structure
 
 * [`docs`](./docs) - Sass function, mixin, and variable documentation.
 * [`utils`](./utils) - Source files being developed.
+
+## SASS Docs
+
+[`Documentation for the tools.`](https://ernieayala.github.io/teq-tonic/)
