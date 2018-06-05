@@ -1,8 +1,21 @@
+///
+/// Builds host context class names because :host-context is not supported across all browsers.
+/// @name host-context
+/// @group shadow-dom
+/// @param {list} $context [null] - The context of the component.
+/// @param {list} $component [null] - Name of the component.
+/// @param {list} $modifier [null] - Any modifiers on the element. (append and modifier)
+/// @param {list} $options [null] - Toggle if it's a host element (prefix-append - change the default child prefix, prefix-modifier - change the default mod prefix, modifier-prefix - change the default component prefix, shadow-root - toggle if the component is the shadow root, compile-class- toggle if the class needs a forced compilation, remove-host - removes the fallback output, custom-selector - complete custom selector without calling to the namespace).
+/// @example scss
+///   build-context-selector($context, $component, $modifiers, $host-options);
+/// @require {function} build-context-selector
+/// @require {function} build-component-selector
+/// @require {function} get-setup
+/// @require {function} update
+///
 
-
-@mixin host-context($context: null, $component: null, $modifiers: null, $options: ()) {
+@mixin host-context($context: null, $component: null, $modifiers: null, $host-options: null) {
 	@if not $context { @error "Host context selector(s) needs to be passed in!"; }
-	@if not $component { @error "Component selector needs to be passed in!"; }
 
 	$needs-context: false;
 	@each $arg in $_settings-context {
@@ -10,8 +23,8 @@
 	}
 
 	@if $needs-context {
-		$host-options: ("prefix-append": get-setup("child-prefix"), "prefix-modifier": get-setup("modifier-prefix"), "shadow-root": false, "compile-class": false, "remove-host": false, "custom-selector": null);
-		$host-options: map-merge($host-options, $options);
+		$host-options-defaults: ("prefix-append": get-setup("child-prefix"), "prefix-modifier": get-setup("modifier-prefix"), "shadow-root": false, "compile-class": false, "remove-host": false, "custom-selector": null);
+		$host-options: update($host-options-defaults, $host-options);
 
 		// Build context selector
 		$context-selector: build-context-selector($context, $component, $modifiers, $host-options);
@@ -23,7 +36,7 @@
 		$host-context-selector: build-context-selector($context, $component, $modifiers, $host-options, $host: true);
 
 		// Default Selector
-		#{$context-selector} #{$component-selector} { @content; }
+		// #{$context-selector} #{$component-selector} { @content; }
 
 		// Host Selector
 		@if map-get($host-options, "shadow-root") {
@@ -35,28 +48,20 @@
 	}
 }
 
-
-
-@function build-component-selector($component: null, $args: null, $host: false) {
-	$component-selector: "";
-	$component-prefix: get-setup("prefix");
-
-	@if map-get($args, "shadow-root") and $host {
-		@if map-get($args, "custom-selector") {
-			$component-selector: $component-prefix + map-get($args, "custom-selector");
-		} @else {
-			$component-selector: $component-prefix + $component;
-		}
-	} @else {
-		@if map-get($args, "compile-class") { $component: class($component); }
-		@each $selector in $component { $component-selector: $component-selector + $selector; }
-		$component-select: selector-append($component-selector);
-	}
-
-	@return $component-selector;
-}
-
-
+///
+/// Builds the context selector for host context.
+/// @name build-context-selector
+/// @group shadow-dom
+/// @access private
+/// @param {list} $context [null] - The context of the component.
+/// @param {list} $component [null] - Name of the component.
+/// @param {list} $modifier [null] - Any modifiers on the element.
+/// @param {map} $args [null] - Chain in the args.
+/// @param {boolean} $host [null] - Toggle if it's a host element.
+/// @example scss
+///   build-context-selector($context, $component, $modifiers, $host-options);
+/// @require {function} append-modifiers
+///
 
 @function build-context-selector($context: null, $component: null, $modifier: null, $args: null, $host: false) {
 	$selectors: ();
@@ -77,7 +82,54 @@
 	@return $selectors;
 }
 
+///
+/// Builds the component selector for host context.
+/// @name build-component-selector
+/// @group shadow-dom
+/// @access private
+/// @param {list} $component [null] - Name of the component.
+/// @param {map} $args [null] - Chain in the args.
+/// @param {boolean} $host [null] - Toggle if it's a host element.
+/// @example scss
+///   build-component-selector($component, $host-options);
+///
 
+@function build-component-selector($component: null, $args: null, $host: false) {
+	$component-selector: "";
+	$component-prefix: get-setup("prefix");
+
+	@if map-get($args, "shadow-root") and $host {
+		@if map-get($args, "custom-selector") {
+			$component-selector: $component-prefix + map-get($args, "custom-selector");
+		} @else {
+			$component-selector: $component-prefix + $component;
+		}
+	} @else {
+		@if map-get($args, "compile-class") { $component: class($component); }
+		@each $selector in $component { $component-selector: $component-selector + $selector; }
+		$component-select: selector-append($component-selector);
+	}
+
+	@return $component-selector;
+}
+
+///
+/// Appends modifiers on host context elements.
+/// @name append-modifiers
+/// @group shadow-dom
+/// @access private
+/// @param {list} $context [null] - The context of the component.
+/// @param {list} $component [null] - Name of the component.
+/// @param {list} $selectors [null] - List of selectors to chain.
+/// @param {list} $modifier [null] - Any modifiers on the element.
+/// @param {map} $args [null] - Chain in the args.
+/// @param {list} $modifier-type [null] - Targets selectors 1 - 10 to apply the modifier to.
+/// @param {string} $prefix [null] - If there is a custom prefix.
+/// @param {boolean} $host [null] - Toggle if it's a host element.
+/// @example scss
+///   append-modifiers($context, $component, $selectors, $modifier, $args, "append", $prefix-type-append);
+/// @require {function} clean-context-selector
+///
 
 @function append-modifiers($context: null, $component: null, $selectors: null, $modifier: null, $args: null, $modifier-type: null, $prefix: null, $host: false) {
 	$output-selector: "";
@@ -87,6 +139,7 @@
 	@each $mod in $mod-append {
 		$i: index($modifier, $mod);
 		$j: index($mod-append, $mod);
+
 		@if $i and $i + 1 <= length($modifier) {
 			@if $j <= length($selectors) {
 				@if $host and $modifier-type == "modifier" {
@@ -110,7 +163,20 @@
 	@return $output-selector;
 }
 
-
+///
+/// Cleans the context selector in preperation for context class output.
+/// @name clean-context-selector
+/// @group shadow-dom
+/// @access private
+/// @param {list} $context [null] - The context of the component.
+/// @param {list} $component [null] - Name of the component.
+/// @param {list} $selectors [null] - List of selectors to chain.
+/// @param {map} $args [null] - Chain in the args.
+/// @param {list} $modifier-type [null] - Targets selectors 1 - 10 to apply the modifier to.
+/// @example scss
+///   clean-context-selector($context, $component, $selectors, $args, $modifier-type);
+/// @require {function} build-component-selector
+///
 
 @function clean-context-selector($context: null, $component: null, $selectors: null, $args: null, $modifier-type: null) {
 	$context-selector: "";

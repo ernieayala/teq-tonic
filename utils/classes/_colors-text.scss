@@ -1,9 +1,18 @@
+///
+/// Builds text color util classes.
+/// @name util-colors-border
+/// @group class
+/// @require {function} class
+/// @require {function} color
+/// @require {variable} $_palette-util
+///
 
+@mixin util-colors-text {
+	@each $color in $_palette-util {
+		$color-name: nth($color, 1);
 
-@each $color in $_palette-util {
-	$color-name: nth($color, 1);
-
-	#{class("util") + "-color-" + $color-name} {
-		color: color($color-name) !important;
+		#{class("util") + "-color-" + $color-name} {
+			color: color($color-name) !important;
+		}
 	}
 }

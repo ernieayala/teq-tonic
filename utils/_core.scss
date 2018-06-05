@@ -1,6 +1,6 @@
 /// Utils - Functions
-@import "functions/border";
 @import "functions/border-radius";
+@import "functions/border";
 @import "functions/box";
 @import "functions/class";
 @import "functions/color-process";
@@ -23,7 +23,6 @@
 @import "helpers/define-modifiers";
 @import "helpers/ellipsis";
 @import "helpers/focus-outline";
-@import "helpers/grid";
 @import "helpers/host-context";
 @import "helpers/host-modifier";
 @import "helpers/input-placeholder";

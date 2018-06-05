@@ -1,5 +1,12 @@
+///
+/// Builds static util classes.
+/// @name util-static
+/// @group class
+/// @require {function} class
+///
 
-
-#{class("util") + "-static"} {
-	flex: 0 0 auto !important;
+@mixin util-static {
+	#{class("util") + "-static"} {
+		flex: 0 0 auto !important;
+	}
 }

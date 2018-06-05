@@ -1,9 +1,16 @@
+///
+/// Builds float util classes.
+/// @name util-float
+/// @group class
+/// @require {function} class
+///
 
+@mixin util-float {
+	#{class("util") + "-float-left"} {
+		float: left !important;
+	}
 
-#{class("util") + "-float-left"} {
-	float: left !important;
-}
-
-#{class("util") + "-float-right"} {
-	float: right !important;
+	#{class("util") + "-float-right"} {
+		float: right !important;
+	}
 }

@@ -1,9 +1,16 @@
+///
+/// Builds visibility util classes.
+/// @name util-visibility
+/// @group class
+/// @require {function} class
+///
 
+@mixin util-visibility {
+	#{class("util") + "-hidden"} {
+		visibility: hidden !important;
+	}
 
-#{class("util") + "-hidden"} {
-	visibility: hidden !important;
-}
-
-#{class("util") + "-visible"} {
-	visibility: visible !important;
+	#{class("util") + "-visible"} {
+		visibility: visible !important;
+	}
 }

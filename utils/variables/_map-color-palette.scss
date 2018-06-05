@@ -1,7 +1,19 @@
+///
+/// Variable map for the core color palette.
+/// @group support
+/// @access public
+///
+
 $_palette-core: (
 	"black": #000000,
 	"white": #FFFFFF
 );
+
+///
+/// Variable map for the blue color palette.
+/// @group support
+/// @access public
+///
 
 $_palette-blue: (
 	"blue-50": #ECF1FC,
@@ -16,6 +28,12 @@ $_palette-blue: (
 	"blue-900": #2B54A5
 );
 
+///
+/// Variable map for the charcoal color palette.
+/// @group support
+/// @access public
+///
+
 $_palette-charcoal: (
 	"charcoal-50": #E6E9EB,
 	"charcoal-100": #D1D6D8,
@@ -28,6 +46,12 @@ $_palette-charcoal: (
 	"charcoal-800": #111A1C,
 	"charcoal-900": #090E10
 );
+
+///
+/// Variable map for the green color palette.
+/// @group support
+/// @access public
+///
 
 $_palette-green: (
 	"green-50": #EAFDF4,
@@ -42,6 +66,12 @@ $_palette-green: (
 	"green-900": #064B2E
 );
 
+///
+/// Variable map for the gray color palette.
+/// @group support
+/// @access public
+///
+
 $_palette-gray: (
 	"gray-50": #FAFAFA,
 	"gray-100": #F1F1F1,
@@ -54,6 +84,12 @@ $_palette-gray: (
 	"gray-800": #2E2E2E,
 	"gray-900": #151515
 );
+
+///
+/// Variable map for the orange color palette.
+/// @group support
+/// @access public
+///
 
 $_palette-orange: (
 	"orange-50": #FDE5D1,
@@ -68,6 +104,12 @@ $_palette-orange: (
 	"orange-900": #723906
 );
 
+///
+/// Variable map for the purple color palette.
+/// @group support
+/// @access public
+///
+
 $_palette-purple: (
 	"purple-50": #F5E9FF,
 	"purple-100": #D9C3F8,
@@ -80,6 +122,12 @@ $_palette-purple: (
 	"purple-800": #472684,
 	"purple-900": #3B206E
 );
+
+///
+/// Variable map for the red color palette.
+/// @group support
+/// @access public
+///
 
 $_palette-red: (
 	"red-50": #FFECF0,
@@ -94,6 +142,12 @@ $_palette-red: (
 	"red-900": #6E0A1E
 );
 
+///
+/// Variable map for the sea green color palette.
+/// @group support
+/// @access public
+///
+
 $_palette-sea-green: (
 	"sea-green-50": #F9FDFD,
 	"sea-green-100": #EEF8F8,
@@ -107,6 +161,12 @@ $_palette-sea-green: (
 	"sea-green-900": #192521
 );
 
+///
+/// Variable map for the yellow color palette.
+/// @group support
+/// @access public
+///
+
 $_palette-yellow: (
 	"yellow-50": #FFF8F2,
 	"yellow-100": #FBEACE,
@@ -119,6 +179,12 @@ $_palette-yellow: (
 	"yellow-800": #8D6D2F,
 	"yellow-900": #755928
 );
+
+///
+/// Variable map for the intent color palette.
+/// @group support
+/// @access public
+///
 
 $_palette-intent: (
 	"negative": #DC143C, // red-500
@@ -150,6 +216,12 @@ $_palette-default: map-collect(
 	$_palette-yellow,
 	$_palette-intent
 ) !global;
+
+///
+/// Variable map for the util color palette.
+/// @group support
+/// @access public
+///
 
 $_palette-util: map-collect(
 	$_palette-core,
