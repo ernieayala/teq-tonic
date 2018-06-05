@@ -22,7 +22,7 @@ Import the core utils file into your project.
 ```
 
 Define settings for your project.
-View the [`settings`](https://ernieayala.github.io/teq-tonic/#mixin-settings) mixin to view what can be customized. 
+View the [`settings`](https://ernieayala.github.io/teq-tonic/#support-mixin-settings) mixin to view what can be customized. 
 
 ``` sass
 @include settings(
