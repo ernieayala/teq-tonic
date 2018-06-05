@@ -26,18 +26,18 @@ View the [`settings`](https://ernieayala.github.io/teq-tonic/#mixin-settings) mi
 
 ``` sass
 @include settings(
-	"namespace" (
-		"main": ".main",
-		"hero": ".hero",
-		"nav": ".nav"
-	)
-	"font-sizes" (
-		"xl": 3rem,
+  "namespace" (
+    "main": ".main",
+    "hero": ".hero",
+    "nav": ".nav"
+  )
+  "font-sizes" (
+    "xl": 3rem,
     "hero": 2rem
-	)
-	"font-family" (
-		"default": "IBM Plex Sans"
-	)
+  )
+  "font-family" (
+    "default": "IBM Plex Sans"
+  )
 );
 ```
 
