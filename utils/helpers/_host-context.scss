@@ -23,7 +23,7 @@
 	}
 
 	@if $needs-context {
-		$host-options-defaults: ("prefix-append": get-setup("child-prefix"), "prefix-modifier": get-setup("modifier-prefix"), "shadow-root": false, "compile-class": false, "remove-host": false, "custom-selector": null);
+		$host-options-defaults: ("prefix-append": get-setup("child-prefix"), "prefix-modifier": get-setup("modifier-prefix"), "shadow-root": false, "compile-class": false, "remove-host": false, "clear-host": false, "custom-selector": null);
 		$host-options: update($host-options-defaults, $host-options);
 
 		// Build context selector
@@ -36,14 +36,16 @@
 		$host-context-selector: build-context-selector($context, $component, $modifiers, $host-options, $host: true);
 
 		// Default Selector
-		// #{$context-selector} #{$component-selector} { @content; }
+		#{$context-selector} #{$component-selector} { @content; }
 
 		// Host Selector
-		@if map-get($host-options, "shadow-root") {
-			@if map-get($host-options, "remove-host") { #{$host-context-selector} { @content; } }
-			:host(#{$host-context-selector}) { @content; }
-		} @else {
-			:host(#{$host-context-selector}) #{$component-selector} { @content; }
+		@if not map-get($host-options, "clear-host") {
+			@if map-get($host-options, "shadow-root") {
+				@if map-get($host-options, "remove-host") { #{$host-context-selector} { @content; } }
+				:host(#{$host-context-selector}) { @content; }
+			} @else {
+				:host(#{$host-context-selector}) #{$component-selector} { @content; }
+			}
 		}
 	}
 }

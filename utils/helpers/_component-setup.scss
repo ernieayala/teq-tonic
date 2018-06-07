@@ -47,6 +47,9 @@
 	// merge default maps
 	$_setup: map-merge($_setup, $defaults-updated) !global;
 
+	// set current global component
+	$_this: class($component) !global;
+
 	// difine modifiers in mods map
 	@include define-modifiers($_settings-mods);
 }
