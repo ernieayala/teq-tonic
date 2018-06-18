@@ -35,6 +35,7 @@
 ///   // output
 ///   background: rgba(var(--color-green-50), 1);
 ///   color: rgba(var(--color-gray-600), 0.8);
+/// @require {function} get-hex
 /// @require {function} luminance
 /// @require {function} wcag
 /// @require {variable} $_palette-default
