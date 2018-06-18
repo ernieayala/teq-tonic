@@ -8,7 +8,9 @@
 		"support": "Utils Support",
 		"property": "Helpers",
 		"shadow-dom": "ShadowDOM",
-		"class": "Util Classes"
+		"class": "Util Classes",
+		"wcag": "WCAG Helpers",
+		"math": "Math :("
 	},
 	"package": "./package.json",
 	"theme": "default"

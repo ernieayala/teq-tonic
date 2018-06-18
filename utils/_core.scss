@@ -6,13 +6,16 @@
 @import "functions/color-process";
 @import "functions/fonts";
 @import "functions/get";
+@import "functions/luminance";
 @import "functions/map-collect";
 @import "functions/opacity";
+@import "functions/pow";
 @import "functions/set";
 @import "functions/space";
 @import "functions/time";
 @import "functions/transition";
 @import "functions/update";
+@import "functions/wcag";
 @import "functions/z-index";
 
 /// Utils - Helpers
