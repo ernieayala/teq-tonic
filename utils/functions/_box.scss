@@ -15,7 +15,10 @@
 @function box($values: null) {
 	$box-layout: ();
 
-	@if length($values) > 4 {
+	@if not $values {
+		@warn "No values entered. Property omitted.";
+		@return null;
+	} @else if length($values) > 4 {
 		@warn "Number of arguments exceeds maximum: 4. Property omitted.";
 		@return null;
 	}

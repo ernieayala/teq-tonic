@@ -42,6 +42,11 @@
 ///
 
 @function color($colors: null, $opacity: 1, $palette: $_palette-default, $css-variables: true) {
+	@if not $colors {
+		@warn "No colors entered. Property omitted.";
+		@return null;
+	}
+
 	// WCAG contrast check
 	@if length($colors) > 1 {
 		$color-luminance: luminance(get-hex(nth($colors, 1), $palette));
@@ -86,7 +91,10 @@
 ///
 
 @function shadow($color: null, $opacity: 1, $palette: $_palette-default) {
-	@if not map-has-key($palette, $color) {
+	@if not $color {
+		@warn "No color entered. Property omitted.";
+		@return null;
+	} @else if not map-has-key($palette, $color) {
 		@warn "No color found for '#{$color}'. Property omitted.";
 		@return null;
 	}

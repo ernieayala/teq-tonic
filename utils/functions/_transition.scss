@@ -19,7 +19,13 @@
 @function transition($props: null, $transition: null, $time: time("base")) {
 	$result: ();
 
-	@if not map-has-key($_default-transitions, $transition) {
+	@if not $props {
+		@warn "No properties to target for animation. Property omitted.";
+		@return null;
+	} @else if not $transition {
+		@warn "No transition selected. View $_default-transitions for options. Property omitted.";
+		@return null;
+	} @else if not map-has-key($_default-transitions, $transition) {
 		@warn "No transition found for '#{$transition}' in $_default-transitions map. Property omitted.";
 		@return null;
 	}

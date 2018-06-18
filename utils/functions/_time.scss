@@ -2,7 +2,7 @@
 /// Time function that calls to the `$_default-animation-time` map.
 /// @name time
 /// @group property
-/// @param {string} $time [base] - Choose the speed.
+/// @param {string} $time [null] - Choose the speed.
 /// @example
 ///   transition-duration: time("fast");
 ///
@@ -11,8 +11,11 @@
 /// @require {variable} $_default-animation-time
 ///
 
-@function time($time: "base") {
-	@if not map-has-key($_default-animation-time, $time) {
+@function time($time: null) {
+	@if not $time {
+		@warn "No animation time value entered. Property omitted.";
+		@return null;
+	} @else if not map-has-key($_default-animation-time, $time) {
 		@warn "No value for '#{time}' in $_default-animation-time map. Property omitted.";
 		@return null;
 	}

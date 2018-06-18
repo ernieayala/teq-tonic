@@ -16,7 +16,10 @@
 ///
 
 @function font($font: null, $weight: "default") {
-	@if not map-has-key($_font-sizes, $font) {
+	@if not $font {
+		@warn "No font size entered. Property omitted.";
+		@return null;
+	} @else if not map-has-key($_font-sizes, $font) {
 		@warn "No font size found for '#{$font}' in $_font-sizes map. Property omitted.";
 		@return null;
 	} @else if not map-has-key($_font-family, $weight) {
@@ -41,7 +44,10 @@
 ///
 
 @function font-size($size: null) {
-	@if not map-has-key($_font-sizes, $size) {
+	@if not $size {
+		@warn "No font size entered. Property omitted.";
+		@return null;
+	} @else if not map-has-key($_font-sizes, $size) {
 		@warn "No font size found for '#{$size}' in $_font-sizes map. Property omitted.";
 		@return null;
 	}
@@ -53,7 +59,7 @@
 /// Font family function that selects the font family/weight from `$_font-family`.
 /// @name font-family
 /// @group property
-/// @param {string} $weight [default] - Choose a font family/weight.
+/// @param {string} $family [default] - Choose a font family/weight.
 /// @example
 ///   font-family: font-family("semibold");
 ///
@@ -62,11 +68,14 @@
 /// @require {variable} $_font-family
 ///
 
-@function font-family($weight: null) {
-	@if not map-has-key($_font-family, $weight) {
-		@warn "No font weight found for '#{$weight}' in $_font-family map. Property omitted.";
+@function font-family($family: null) {
+	@if not $family {
+		@warn "No font family entered. Property omitted.";
+		@return null;
+	} @else if not map-has-key($_font-family, $family) {
+		@warn "No font family found for '#{$family}' in $_font-family map. Property omitted.";
 		@return null;
 	}
 
-	@return map-get($_font-family, $weight), sans-serif;
+	@return map-get($_font-family, $family), sans-serif;
 }

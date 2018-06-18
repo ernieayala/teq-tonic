@@ -12,7 +12,10 @@
 ///
 
 @function opacity($lightness: null) {
-	@if not map-has-key($_default-opacity, $lightness) {
+	@if not $lightness {
+		@warn "No opacity value entered. Property omitted.";
+		@return null;
+	} @else if not map-has-key($_default-opacity, $lightness) {
 		@warn "No value for '#{$lightness} in $_default-opacity map. Property omitted.";
 		@return null;
 	}

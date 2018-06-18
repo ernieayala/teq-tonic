@@ -18,7 +18,10 @@
 	$options-defaults: ("box": false);
 	$options: update($options-defaults, $options);
 
-	@if not map-has-key($_default-space, $value) {
+	@if not $value {
+		@warn "No value entered. Property omitted.";
+		@return null;
+	} @else if not map-has-key($_default-space, $value) {
 		@if not map-get($options, "box") {
 			@warn "No size found for '#{$value}' in $_default-space map. Property omitted.";
 		}
