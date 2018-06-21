@@ -8,13 +8,8 @@
 	],
 	"description": "A neat Sass tool set",
 	"devDependencies": {
-		"colors": "1.3.0",
-		"eyeglass": "1.5.0",
-		"fs-extra": "6.0.1",
 		"in-publish": "2.0.0",
-		"npm-bump": "0.0.23",
-		"rimraf": "2.6.2",
-		"xml2js": "0.4.19"
+		"npm-bump": "0.0.23"
 	},
 	"eyeglass": {
 		"needs": "*",
@@ -38,11 +33,9 @@
 		"url": "git+https://github.com/ernieayala/teq-tonic.git"
 	},
 	"scripts": {
-		"clean": "rimraf classes functions helpers placeholders variables _classes.scss _utils.scss _root.scss",
+		"bump": "not-in-install && npm-bump patch && npm run docs",
 		"cleanInstall": "rm -rf ./node_modules ./package-lock.json && npm i",
-		"docs": "sassdoc core",
-		"prepublish": "not-in-install && npm run clean && npm run docs && npm run setVersion",
-		"bump": "not-in-install && npm run clean && npm run docs && npm-bump patch"
+		"docs": "sassdoc core"
 	},
 	"style": "core/_teq-tonic.scss",
 	"title": "Teq-Tonic Tools",
