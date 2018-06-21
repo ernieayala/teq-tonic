@@ -24,7 +24,7 @@
 /// Color function that calls to the `$_palette-default` map by default.
 /// @name color
 /// @group property
-/// @param {string} $color [null] - Choose a color from a color palette.
+/// @param {string} $values [null] - Choose a color from a color palette or enter test case for WCAG.
 /// @param {number} $opacity [1] - Change the opacity of the color.
 /// @param {map} $palette [$_palette-default] - Change which palette the color call is to.
 /// @param {boolean} $css-variables [true] - Choose if it's a css variable or rgba value.
@@ -35,41 +35,37 @@
 ///   // output
 ///   background: rgba(var(--color-green-50), 1);
 ///   color: rgba(var(--color-gray-600), 0.8);
-/// @require {function} get-hex
-/// @require {function} luminance
 /// @require {function} wcag
 /// @require {variable} $_palette-default
 ///
 
-@function color($colors: null, $opacity: 1, $palette: $_palette-default, $css-variables: true) {
-	@if not $colors {
+@function color($values: null, $opacity: 1, $palette: $_palette-default, $css-variables: true) {
+	@if not $values {
 		@warn "No colors entered. Property omitted.";
 		@return null;
 	}
 
 	// WCAG contrast check
-	@if length($colors) > 1 {
-		$color-luminance: luminance(get-hex(nth($colors, 1), $palette));
-		$contrast-luminance: luminance(get-hex(nth($colors, 2), $palette));
-		$wcag: wcag($color-luminance, $contrast-luminance);
-
-		// WCAG 2
-		@if $wcag < 4.5 {
-			@warn "WCAG AA: Failed. Your current ratio is #{$wcag} and needs to be 4.5 or higher.";
-		}
-
-		// WCAG 3
-		@if $wcag < 7.1 {
-			@warn "WCAG AAA: Failed.";
-		}
+	@if length($values) > 1 {
+		@warn wcag($values, $palette);
 	}
 
-	@if map-has-key($palette, nth($colors, 1)) and $css-variables {
-		@return #{rgba(unquote("var(--color-" + nth($colors, 1) + ")"), $opacity)};
-	} @else if map-has-key($palette, nth($colors, 1)) {
-		@return #{rgba(map-get($palette, nth($colors, 1)), $opacity)};
+	// If in the palette and a css variable
+	@if map-has-key($palette, nth($values, 1)) and $css-variables {
+		@return #{rgba(unquote("var(--color-" + nth($values, 1) + ")"), $opacity)};
+
+	// If in the palette and not a css variable
+	} @else if map-has-key($palette, nth($values, 1)) {
+		@return #{rgba(map-get($palette, nth($values, 1)), $opacity)};
+
+	// If just a regular color
+	} @else if type-of(nth($values, 1)) == "color" {
+		@return #{rgba(nth($values, 1), $opacity)};
+
+	// If it's not in the palette or a color
 	} @else {
-		@return #{rgba(nth($colors, 1), $opacity)};
+		@warn "No color name found in $_palette-default for '#{nth($values, 1)}' and it is not a color. Property omitted.";
+		@return null;
 	}
 }
 

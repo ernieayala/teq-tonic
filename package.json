@@ -1,40 +1,50 @@
 {
-	"title": "Teq-Tonic Tools",
-	"name": "teq-tonic",
-	"version": "0.0.14",
-	"private": false,
-	"description": "A Neat Sass Tool Set",
-	"homepage": "",
 	"author": "Ernie Ayala <teafortwo.ea@gmail.com>",
+	"bugs": {
+		"url": "https://github.com/ernieayala/teq-tonic/issues"
+	},
 	"contributors": [
 		"Lucky Nguyen <luckyknguyen@gmail.com>"
 	],
-	"keywords": [
-		"SASS",
-		"SCSS"
-	],
-	"readme": "./README.md",
-	"dependencies": {
-		"sass-module-importer": "1.4.0"
-	},
+	"description": "A neat Sass tool set",
 	"devDependencies": {
 		"colors": "1.3.0",
+		"eyeglass": "1.5.0",
 		"fs-extra": "6.0.1",
+		"in-publish": "2.0.0",
+		"npm-bump": "0.0.23",
 		"rimraf": "2.6.2",
 		"xml2js": "0.4.19"
 	},
-	"scripts": {
-		"clean": "rimraf classes functions helpers placeholders variables _classes.scss _utils.scss _root.scss",
-		"cleanInstall": "rm -rf ./node_modules ./package-lock.json && npm i",
-		"docs": "sassdoc utils"
+	"eyeglass": {
+		"needs": "*",
+		"exports": "eyeglass-exports.js"
 	},
+	"homepage": "https://ernieayala.github.io/teq-tonic/",
+	"keywords": [
+		"css",
+		"eyeglass-module",
+		"functions",
+		"mixins",
+		"sass",
+		"scss"
+	],
+	"license": "MIT",
+	"main": "index.js",
+	"name": "teq-tonic",
+	"readme": "./README.md",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/ernieayala/teq-tonic.git"
 	},
-	"engines": {
-		"node": ">=8.4.0",
-		"npm": ">=5.3.0"
+	"scripts": {
+		"clean": "rimraf classes functions helpers placeholders variables _classes.scss _utils.scss _root.scss",
+		"cleanInstall": "rm -rf ./node_modules ./package-lock.json && npm i",
+		"docs": "sassdoc utils",
+		"prepublish": "not-in-install && npm run clean && npm run docs && npm run setVersion",
+		"setVersion": ""
 	},
-	"license": "MIT"
+	"style": "core/_teq-tonic.scss",
+	"title": "Teq-Tonic Tools",
+	"version": "0.0.14"
 }
