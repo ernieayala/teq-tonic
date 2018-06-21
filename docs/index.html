@@ -1012,7 +1012,7 @@ false</code></pre></div><h3 class="item__sub-heading">Requires</h3><ul class="li
  }" data-collapsed="@function strip-unit($number: null) { ... }"><code>@function strip-unit($number: null) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Strip unit from a number value.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$number</code></th><td data-label="desc"><p>Number value.</p></td><td data-label="type"><code>Number</code></td><td data-label="default"><code>null</code></td></tr></tbody></table><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>strip-unit(18px)
 
 // output
-padding: 0.8rem;</code></pre></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#support-variable-_default-space"><code>_default-space</code></a></li></ul></section><section class="main__item container item" id="support-function-update"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function-update">update</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function update($map: null, $values: null) { 
+padding: 0.8rem;</code></pre></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#support-variable-_default-space"><code>_default-space</code></a></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#wcag-function-wcag"><code>wcag</code></a></li></ul></section><section class="main__item container item" id="support-function-update"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function-update">update</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function update($map: null, $values: null) { 
 	$i: 0;
 	$update: ();
 
@@ -1505,13 +1505,45 @@ $map: (
  }" data-collapsed="@mixin reset-list() { ... }"><code>@mixin reset-list() { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Reset list placeholder.</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>ul {
   @include reset-list;
 }</code></pre></div></section></section></section><section class="main__section"><h1 class="main__heading" id="wcag"><div class="container">WCAG Helpers</div></h1><section class="main__sub-section" id="wcag-function"><h2 class="main__heading--secondary"><div class="container">functions</div></h2><section class="main__item container item" id="wcag-function-wcag"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function-wcag">wcag</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function wcag($values: null, $palette: null) { 
+	// base variables
 	$color-name: nth($values, 1);
-	$color-hex: get-hex($color-name, $palette);
+	$color-hex: review-hex($color-name, $palette);
 	$color-luminance: null;
 	$contrast-name: nth($values, 2);
-	$contrast-hex: get-hex($contrast-name, $palette);
+	$contrast-hex: review-hex($contrast-name, $palette);
 	$contrast-luminance: null;
+
+	// WCAG variables
+	$wcag-aa: 4.5;
+	$wcag-aaa: 7.1;
 	$wcag-contrast: null;
+
+	// Font size
+	@if length($values) &gt; 2 {
+		@if type-of(nth($values, 3)) == &quot;number&quot; and nth($values, 3) &lt; 99 {
+			$font-size: strip-unit(nth($values, 3));
+			$pt: 0;
+
+			@if unit(nth($values, 3)) == &quot;px&quot; {
+				$pt: ($font-size * 72 / 96);
+			} @else if unit(nth($values, 3)) == &quot;rem&quot; {
+				$pt: (($font-size * 10) * 72 / 96);
+			}
+
+			// todo - search font size map
+
+			@if $pt &gt;= 18 {
+				$wcag-aa: 3;
+			}
+		} @else if wcag-font-weight(nth($values, 3)) {
+			$wcag-aa: wcag-font-weight(nth($values, 3));
+		}
+	}
+
+	// Font weight
+	@if length($values) &gt; 3 {
+		$wcag-aa: wcag-font-weight(nth($values, 4));
+	}
 
 	// WCAG first pass
 	@if $color-hex and $contrast-hex {
@@ -1520,8 +1552,8 @@ $map: (
 		$wcag-contrast: wcag-contrast($color-luminance, $contrast-luminance);
 	}
 
-	// WCAG 2
-	@if $wcag-contrast &lt; 4.5 {
+	// WCAG Test
+	@if $wcag-contrast &lt; $wcag-aa {
 		@if map-has-key($palette, $color-name) {
 			$name-length: str-length($color-name);
 			$trim-length: 0;
@@ -1537,7 +1569,7 @@ $map: (
 
 			// build color
 			$color-group: str-slice($color-name, 1, $trim-length - 1);
-			$color-shade: number(str-slice($color-name, $trim-length + 1, $name-length));
+			$color-shade: to-number(str-slice($color-name, $trim-length + 1, $name-length));
 
 			// create new colors
 			$new-color: null;
@@ -1547,7 +1579,7 @@ $map: (
 			// safety
 			$timeout: 0;
 
-			@while $new-wcag-contrast &lt; 4.5 and $timeout &lt; 10 {
+			@while $new-wcag-contrast &lt; $wcag-aa and $timeout &lt; 10 {
 				@if $color-luminance &lt; $contrast-luminance {
 					// increase color shade
 					@if $color-shade == 900 {
@@ -1573,26 +1605,43 @@ $map: (
 				}
 
 				// create color suggestion
-				$new-color: get-hex($color-group + &quot;-&quot; + $new-shade, $palette);
+				$new-color: review-hex($color-group + &quot;-&quot; + $new-shade, $palette);
+				$new-luminance: luminance($new-color);
+				$new-wcag-contrast: wcag-contrast($new-luminance, $contrast-luminance);
+
+				// safety
+				$timeout: $timeout + 1;
+			}
+
+			@return &quot;WCAG AA: `#{nth($values, 1)}` did not meet the proper contrast ratio. The closest valid color in the `#{$color-group}` palette is `#{$color-group}-#{$new-shade}`.&quot;;
+		} @else {
+			// create new colors
+			$new-color: $color-hex;
+			$new-wcag-contrast: $wcag-contrast;
+
+			// safety
+			$timeout: 0;
+
+			@while $new-wcag-contrast &lt; $wcag-aa and $timeout &lt; 10 {
+				@if $color-luminance &lt; $contrast-luminance {
+					$new-color: lighten($new-color, 10%);
+				} @else {
+					$new-color: darken($new-color, 10%);
+				}
+
+				// create color suggestion
 				$new-luminance: luminance($new-color);
 				$new-wcag-contrast: wcag-contrast($new-luminance, $contrast-luminance);
 
 				$timeout: $timeout + 1;
 			}
 
-			@return &quot;WCAG AA: `#{nth($values, 1)}` did not meet the proper contrast ratio. The closest valid color in the `#{$color-group}` palette is `#{$color-group}-#{$new-shade}`.&quot;;
-		} @else {
-			@return null;
+			@return &quot;WCAG AA: `#{nth($values, 1)}` did not meet the proper contrast ratio. The closest valid color within 10% incrementation is `#{$new-color}`.&quot;;
 		}
 	} @else {
-		@return null;
+		@return &quot;WCAG AA: Passed.&quot;;
 	}
-
-	// // WCAG 3
-	// @if $wcag &lt; 7.1 {
-	// 	@warn &quot;WCAG AAA: Failed.&quot;;
-	// }
- }" data-collapsed="@function wcag($values: null, $palette: null) { ... }"><code>@function wcag($values: null, $palette: null) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Checks WCAG contrast ratio</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$values</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>List</code></td><td data-label="default"><code>null</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$palette</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>Map</code></td><td data-label="default"><code>null</code></td></tr></tbody></table><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>$wcag-contrast: wcag-contrast($values, $palette);</code></pre></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#property-function-luminance"><code>luminance</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#wcag-function-review-hex"><code>review-hex</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#wcag-function-wcag-contrast"><code>wcag-contrast</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#wcag-function-wcag-font-weight"><code>wcag-font-weight</code></a></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#property-function-color"><code>color</code></a></li></ul></section><section class="main__item container item" id="wcag-function-review-hex"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function-review-hex">review-hex</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function review-hex($color: null, $palette: null) { 
+ }" data-collapsed="@function wcag($values: null, $palette: null) { ... }"><code>@function wcag($values: null, $palette: null) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Checks WCAG contrast ratio</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$values</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>List</code></td><td data-label="default"><code>null</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$palette</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>Map</code></td><td data-label="default"><code>null</code></td></tr></tbody></table><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>$wcag-contrast: wcag-contrast($values, $palette);</code></pre></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#support-function-strip-unit"><code>strip-unit</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#property-function-luminance"><code>luminance</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#wcag-function-review-hex"><code>review-hex</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#wcag-function-wcag-contrast"><code>wcag-contrast</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#wcag-function-wcag-font-weight"><code>wcag-font-weight</code></a></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#property-function-color"><code>color</code></a></li></ul></section><section class="main__item container item" id="wcag-function-review-hex"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function-review-hex">review-hex</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function review-hex($color: null, $palette: null) { 
 	@if map-has-key($palette, $color) {
 		@return map-get($palette, $color);
 	} @else {
