@@ -10,6 +10,7 @@
 /// @require {function} luminance
 /// @require {function} review-hex
 /// @require {function} wcag-contrast
+/// @require {function} wcag-font-weight
 ///
 
 @function wcag($values: null, $palette: null) {
@@ -152,4 +153,28 @@
 	// https://www.w3.org/TR/WCAG20/ - contrast ratio
 	// (L1 + 0.5) / (L2 + 0.5)
 	@return (($color-light + 0.05) / ($color-dark + 0.05));
+}
+
+///
+/// Check font weight.
+/// @name wcag-font-weight
+/// @group wcag
+/// @access private
+/// @example scss
+///   wcag-font-weight(bold)
+///   wcag-font-weight(700)
+///
+
+@function wcag-font-weight($weight: null) {
+	@if type-of($weight) == "number" {
+		@if $weight >= 700 {
+			@return 3;
+		}
+	} @else if type-of($weight) == "string" {
+		@if $weight = "bold" or $weight = "bolder" {
+			@return 3;
+		}
+	}
+
+	@return null;
 }
