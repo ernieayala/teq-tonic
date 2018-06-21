@@ -40,9 +40,9 @@
 	"scripts": {
 		"clean": "rimraf classes functions helpers placeholders variables _classes.scss _utils.scss _root.scss",
 		"cleanInstall": "rm -rf ./node_modules ./package-lock.json && npm i",
-		"docs": "sassdoc utils",
+		"docs": "sassdoc core",
 		"prepublish": "not-in-install && npm run clean && npm run docs && npm run setVersion",
-		"setVersion": ""
+		"bump": "not-in-install && npm run clean && npm run docs && npm-bump patch"
 	},
 	"style": "core/_teq-tonic.scss",
 	"title": "Teq-Tonic Tools",
