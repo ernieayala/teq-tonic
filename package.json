@@ -33,7 +33,7 @@
     "url": "git+https://github.com/ernieayala/teq-tonic.git"
   },
   "scripts": {
-    "bump": "not-in-install && npm-bump patch && npm run docs",
+    "bump": "not-in-install && npm-bump patch",
     "cleanInstall": "rm -rf ./node_modules ./package-lock.json && npm i",
     "docs": "sassdoc core"
   },
