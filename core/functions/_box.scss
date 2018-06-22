@@ -2,7 +2,7 @@
 /// The box function mimics the normal css shorthand for writting padding and margin but can be used to call the the spacing sizes from the `$_default-space` map.
 /// @name box
 /// @group property
-/// @param {list} $value [null] - Choose space values.
+/// @param {list} $values [null] - Choose space values.
 /// @example
 ///   margin: box("sm" "md" 0.1rem);
 ///
@@ -16,7 +16,7 @@
 	$box-layout: ();
 
 	@if not $values {
-		@warn "No values entered. Property omitted.";
+		@warn "No box values entered. Property omitted.";
 		@return null;
 	} @else if length($values) > 4 {
 		@warn "Number of arguments exceeds maximum: 4. Property omitted.";
@@ -24,10 +24,13 @@
 	}
 
 	@each $value in $values {
-		@if space($value, "box" true) {
+		@if map-has-key($_default-space, $value) {
 			$box-layout: append($box-layout, space($value));
-		} @else {
+		} @else if type-of($value) == "number" {
 			$box-layout: append($box-layout, $value);
+		} @else {
+			@warn "No name found in $_default-space for '#{$value}' and it is not a number. Property omitted.";
+			@return null;
 		}
 	}
 

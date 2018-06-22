@@ -7,7 +7,7 @@
 /// @param {string} $time [time("base")] - The time being applied.
 /// @example
 ///   transition: transition(opacity, "link");
-///   transition: transition(opacity, "shift", time("slow"));
+///   transition: transition(opacity, "shift", "slow");
 ///
 ///   // output
 ///   transition: opacity 0.3s cubic-bezier(0.075, 0.820, 0.165, 1.000);
@@ -16,11 +16,11 @@
 /// @require {variable} $_default-transitions
 ///
 
-@function transition($props: null, $transition: null, $time: time("base")) {
+@function transition($props: null, $transition: null, $time: "base") {
 	$result: ();
 
 	@if not $props {
-		@warn "No properties to target for animation. Property omitted.";
+		@warn "No properties to target for a transition. Property omitted.";
 		@return null;
 	} @else if not $transition {
 		@warn "No transition selected. View $_default-transitions for options. Property omitted.";
@@ -28,6 +28,10 @@
 	} @else if not map-has-key($_default-transitions, $transition) {
 		@warn "No transition found for '#{$transition}' in $_default-transitions map. Property omitted.";
 		@return null;
+	}
+
+	@if type-of($time) == "string" {
+		$time: time($time);
 	}
 
 	$trans: map-get($_default-transitions, $transition);

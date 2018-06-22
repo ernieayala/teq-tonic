@@ -20,7 +20,7 @@
 		@return null;
 	} @else if color($color) {
 		@return #{color($color) $size solid};
-	} @else {
-		@return #{$color $size solid};
 	}
+
+	@return null;
 }

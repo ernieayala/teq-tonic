@@ -50,20 +50,17 @@
 		@warn wcag($values, $palette);
 	}
 
-	// If in the palette and a css variable
 	@if map-has-key($palette, nth($values, 1)) and $css-variables {
+		// If in the palette and a css variable
 		@return #{rgba(unquote("var(--color-" + nth($values, 1) + ")"), $opacity)};
-
-	// If in the palette and not a css variable
 	} @else if map-has-key($palette, nth($values, 1)) {
+		// If in the palette and not a css variable
 		@return #{rgba(map-get($palette, nth($values, 1)), $opacity)};
-
-	// If just a regular color
 	} @else if type-of(nth($values, 1)) == "color" {
+		// If just a regular color
 		@return #{rgba(nth($values, 1), $opacity)};
-
-	// If it's not in the palette or a color
 	} @else {
+		// If it's not in the palette or a color
 		@warn "No color name found in $_palette-default for '#{nth($values, 1)}' and it is not a color. Property omitted.";
 		@return null;
 	}

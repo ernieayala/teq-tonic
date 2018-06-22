@@ -10,6 +10,7 @@
 /// @require {function} luminance
 /// @require {function} review-hex
 /// @require {function} wcag-contrast
+/// @require {function} wcag-font-size
 /// @require {function} wcag-font-weight
 ///
 
@@ -30,28 +31,19 @@
 	// Font size
 	@if length($values) > 2 {
 		@if type-of(nth($values, 3)) == "number" and nth($values, 3) < 99 {
-			$font-size: strip-unit(nth($values, 3));
-			$pt: 0;
-
-			@if unit(nth($values, 3)) == "px" {
-				$pt: ($font-size * 72 / 96);
-			} @else if unit(nth($values, 3)) == "rem" {
-				$pt: (($font-size * 10) * 72 / 96);
+			$wcag-aa: wcag-font-size(nth($values, 3), $wcag-aa);
+		} @else {
+			@if map-has-key($_font-sizes, nth($values, 3)) {
+				$wcag-aa: wcag-font-size(nth($values, 3), $wcag-aa);
+			} @else {
+				$wcag-aa: wcag-font-weight(nth($values, 3), $wcag-aa);
 			}
-
-			// todo - search font size map
-
-			@if $pt >= 18 {
-				$wcag-aa: 3;
-			}
-		} @else if wcag-font-weight(nth($values, 3)) {
-			$wcag-aa: wcag-font-weight(nth($values, 3));
 		}
 	}
 
 	// Font weight
 	@if length($values) > 3 {
-		$wcag-aa: wcag-font-weight(nth($values, 4));
+		$wcag-aa: wcag-font-weight(nth($values, 4), $wcag-aa);
 	}
 
 	// WCAG first pass
@@ -205,6 +197,39 @@
 }
 
 ///
+/// Check font size.
+/// @name wcag-font-size
+/// @group wcag
+/// @access private
+/// @example scss
+///   wcag-font-weight(18px)
+///
+
+@function wcag-font-size($value: null, $wcag-value: null) {
+	@if map-has-key($_font-sizes, $value) {
+		$value: map-get($_font-sizes, $value);
+	} @else {
+		@warn "No font size found for '#{$value}' in $_font-sizes map. Property omitted.";
+		@return $wcag-value;
+	}
+
+	$pt: 0;
+	$size: strip-unit($value);
+
+	@if unit($value) == "px" {
+		$pt: ($size * 72 / 96);
+	} @else if unit($value) == "rem" {
+		$pt: (($size * 10) * 72 / 96);
+	}
+
+	@if $pt >= 18 {
+		@return 3;
+	}
+
+	@return $wcag-value;
+}
+
+///
 /// Check font weight.
 /// @name wcag-font-weight
 /// @group wcag
@@ -214,16 +239,16 @@
 ///   wcag-font-weight(700)
 ///
 
-@function wcag-font-weight($weight: null) {
+@function wcag-font-weight($weight: null, $wcag-value: null) {
 	@if type-of($weight) == "number" {
 		@if $weight >= 700 {
 			@return 3;
 		}
 	} @else if type-of($weight) == "string" {
-		@if $weight = "bold" or $weight = "bolder" {
+		@if $weight == "bold" or $weight == "bolder" {
 			@return 3;
 		}
 	}
 
-	@return null;
+	@return $wcag-value;
 }
