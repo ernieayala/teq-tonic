@@ -5,12 +5,15 @@
 	},
 	"groups": {
 		"undefined": "General",
-		"support": "Utils Support",
-		"property": "Helpers",
-		"shadow-dom": "ShadowDOM",
-		"class": "Util Classes",
-		"wcag": "WCAG Helpers",
-		"math": "Math :("
+		"app-setup": "Setup",
+		"color": "Color",
+		"helper": "Helpers",
+		"placeholder": "Placeholders",
+		"shadow-dom": "ShadowDom",
+		"support": "Support",
+		"wcag": "WCAG",
+		"util-class": "Util Classes",
+		"vars": "Variables"
 	},
 	"package": "./package.json",
 	"theme": "default"

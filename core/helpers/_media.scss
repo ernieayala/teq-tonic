@@ -1,6 +1,7 @@
 ///
 /// Placeholder for media queries using the `$_default-media-queries` map.
 /// @name media
+/// @group helper
 /// @param {string} $name [null] - Choose a media size.
 /// @example scss
 ///   @include media("for-phone-only") {

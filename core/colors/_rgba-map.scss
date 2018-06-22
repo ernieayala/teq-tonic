@@ -1,0 +1,21 @@
+///
+/// Gets the rgba values from a hex value in a map of colors.
+/// @name rgba-map
+/// @group color
+/// @access private
+/// @param {map} $colors [null] - A palette of colors.
+/// @example scss
+///   $colors-rgba: rgba-map($palette);
+///
+
+@function rgba-map($colors: null) {
+	$color-map: ();
+
+	@each $color in $colors {
+		$color-name: nth($color, 1);
+		$color-rgb: #{red(nth($color, 2)), green(nth($color, 2)), blue(nth($color, 2))};
+		$color-map: map-merge($color-map, ($color-name: $color-rgb));
+	}
+
+	@return $color-map;
+}

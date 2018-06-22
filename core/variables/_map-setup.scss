@@ -1,6 +1,6 @@
 ///
 /// Variable map for setup namespaces.
-/// @group support
+/// @group vars
 /// @access private
 ///
 
@@ -17,7 +17,7 @@ $_setup-namespace: (
 
 ///
 /// Variable map for setup toggles.
-/// @group support
+/// @group vars
 /// @access private
 ///
 
@@ -33,7 +33,7 @@ $_setup-toggles: (
 
 ///
 /// Variable map that compiles other setup maps.
-/// @group support
+/// @group vars
 /// @access private
 /// @require {function} map-collect
 /// @require {variable} $_setup-namespace
