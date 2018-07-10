@@ -15,39 +15,40 @@
 ///
 
 @mixin host-context($context: null, $component: null, $modifiers: null, $host-options: null) {
-	@if not $context { @error "Host context selector(s) needs to be passed in!"; }
+	@warn "Host-context";
+	// @if not $context { @error "Host context selector(s) needs to be passed in!"; }
 
-	$needs-context: false;
-	@each $arg in $_settings-context {
-		@if nth($context, 1) == $arg or "all" == $arg { $needs-context: true; }
-	}
+	// $needs-context: false;
+	// @each $arg in $_settings-context {
+	// 	@if nth($context, 1) == $arg or "all" == $arg { $needs-context: true; }
+	// }
 
-	@if $needs-context {
-		$host-options-defaults: ("prefix-append": get-setup("child-prefix"), "prefix-modifier": get-setup("modifier-prefix"), "shadow-root": false, "compile-class": false, "remove-host": false, "clear-host": false, "custom-selector": null);
-		$host-options: update($host-options-defaults, $host-options);
+	// @if $needs-context {
+	// 	$host-options-defaults: ("prefix-append": get-setup("child-prefix"), "prefix-modifier": get-setup("modifier-prefix"), "shadow-root": false, "compile-class": false, "remove-host": false, "clear-host": false, "custom-selector": null);
+	// 	$host-options: update($host-options-defaults, $host-options);
 
-		// Build context selector
-		$context-selector: build-context-selector($context, $component, $modifiers, $host-options);
+	// 	// Build context selector
+	// 	$context-selector: build-context-selector($context, $component, $modifiers, $host-options);
 
-		// Build component selector
-		$component-selector: build-component-selector($component, $host-options);
+	// 	// Build component selector
+	// 	$component-selector: build-component-selector($component, $host-options);
 
-		// Build host context selector
-		$host-context-selector: build-context-selector($context, $component, $modifiers, $host-options, $host: true);
+	// 	// Build host context selector
+	// 	$host-context-selector: build-context-selector($context, $component, $modifiers, $host-options, $host: true);
 
-		// Default Selector
-		#{$context-selector} #{$component-selector} { @content; }
+	// 	// Default Selector
+	// 	#{$context-selector} #{$component-selector} { @content; }
 
-		// Host Selector
-		@if not map-get($host-options, "clear-host") {
-			@if map-get($host-options, "shadow-root") {
-				@if map-get($host-options, "remove-host") { #{$host-context-selector} { @content; } }
-				:host(#{$host-context-selector}) { @content; }
-			} @else {
-				:host(#{$host-context-selector}) #{$component-selector} { @content; }
-			}
-		}
-	}
+	// 	// Host Selector
+	// 	@if not map-get($host-options, "clear-host") {
+	// 		@if map-get($host-options, "shadow-root") {
+	// 			@if map-get($host-options, "remove-host") { #{$host-context-selector} { @content; } }
+	// 			@at-root :host(#{$host-context-selector}) { @content; }
+	// 		} @else {
+	// 			@at-root :host(#{$host-context-selector}) #{$component-selector} { @content; }
+	// 		}
+	// 	}
+	// }
 }
 
 ///

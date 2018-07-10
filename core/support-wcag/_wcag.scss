@@ -211,9 +211,6 @@
 @function wcag-font-size($value: null, $wcag-value: null) {
 	@if map-has-key($_font-sizes, $value) {
 		$value: map-get($_font-sizes, $value);
-	} @else {
-		@warn "No font size found for '#{$value}' in $_font-sizes map. Property omitted.";
-		@return $wcag-value;
 	}
 
 	$pt: 0;

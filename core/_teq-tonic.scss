@@ -1,12 +1,27 @@
+// Support
+@import "support/component-setup";
+@import "support/define-modifiers";
+@import "support/get";
+@import "support/luminance";
+@import "support/map-collect";
+@import "support/math";
+@import "support/set";
+@import "support/strip-unit";
+@import "support/toggle";
+@import "support/update";
+
+// Setup
 @import "app-setup/base";
 @import "app-setup/css-vars";
 @import "app-setup/map-settings";
 @import "app-setup/settings";
 
+// Colors
 @import "colors/color";
 @import "colors/map-color-palette";
 @import "colors/rgba-map";
 
+// Helpers
 @import "helpers/border-radius";
 @import "helpers/border";
 @import "helpers/box";
@@ -25,9 +40,11 @@
 @import "helpers/transition";
 @import "helpers/z-index";
 
+// Placeholders
 @import "placeholders/clearfix";
 @import "placeholders/reset-list";
 
+// ShadowDom
 @import "shadow-dom/child";
 @import "shadow-dom/component";
 @import "shadow-dom/context";
@@ -36,19 +53,10 @@
 @import "shadow-dom/modifiers";
 @import "shadow-dom/nested";
 
-@import "support/component-setup";
-@import "support/define-modifiers";
-@import "support/get";
-@import "support/luminance";
-@import "support/map-collect";
-@import "support/math";
-@import "support/set";
-@import "support/strip-unit";
-@import "support/toggle";
-@import "support/update";
-
+// WCAG
 @import "support-wcag/wcag";
 
+// Util Classes
 @import "util-classes/colors-background";
 @import "util-classes/colors-border";
 @import "util-classes/colors-text";
@@ -65,6 +73,7 @@
 @import "util-classes/visibility";
 @import "util-classes/z-index";
 
+// Variables
 @import "variables/map-default";
 @import "variables/map-font";
 @import "variables/map-mods";

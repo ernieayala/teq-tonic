@@ -25,7 +25,7 @@
 		$i: index($selectors, $selector);
 
 		@if $i <= 1 {
-			$nested-selector: $nested-selector + nth($selectors, $i);
+			$nested-selector: $nested-selector + has-selector(nth($selectors, $i));
 		} @else {
 			$nested-selector: $nested-selector + get-setup("child-prefix") + nth($selectors, $i);
 		}

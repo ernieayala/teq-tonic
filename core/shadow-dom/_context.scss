@@ -21,10 +21,10 @@
 	@each $selector in $selectors {
 		$i: index($selectors, $selector);
 
-		@if $i <= 1 {
-			$context-selector: $context-selector + nth($selectors, $i);
+		@if get-setup("host") {
+			$context-selector: $context-selector + ".context-" + strip-selector($selector);
 		} @else {
-			$context-selector: $context-selector + get-setup("child-prefix") + nth($selectors, $i);
+			$context-selector: $context-selector + has-selector($selector);
 		}
 	};
 
@@ -43,7 +43,35 @@
 		}
 	}
 
-	#{$context-selector}#{$mod-selector} & {
-		@content;
+	@if get-setup("host") {
+		@at-root :host(#{$context-selector}#{$mod-selector}) {
+			@content;
+		}
+	} @else {
+		#{$context-selector}#{$mod-selector} & {
+			@content;
+		}
 	}
+}
+
+@function strip-selector($selector) {
+	@if not type-of($selector) == "string" {
+		@return null;
+	}
+
+	$prefix: str-slice($selector, 0, 1);
+
+	@if $prefix == "." or $prefix == "#" {
+		@return str-slice($selector, 2, str-length($selector));
+	}
+
+	@return $selector;
+}
+
+@function has-selector($selector) {
+	@if map-get($_namespace-component, $selector) {
+		@return map-get($_namespace-component, $selector);
+	}
+
+	@return $selector;
 }

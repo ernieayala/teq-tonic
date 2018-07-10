@@ -19,13 +19,16 @@
 ///
 
 @mixin css-vars($palette: null) {
-	$colors-rgba: rgba-map($palette);
+	@if not $palette {
+		@warn "No palette entered. Property omitted.";
+	} @else {
+		$rgba-map: rgba-map($palette);
 
-	@each $color in $colors-rgba {
-		$i: index($colors-rgba, $color);
-		$color-name: nth($color, 1);
-		$color-value: nth($color, 2);
+		@each $color in $rgba-map {
+			$color-name: nth($color, 1);
+			$color-value: nth($color, 2);
 
-		--color-#{$color-name}: #{$color-value};
+			--color-#{$color-name}: #{$color-value};
+		}
 	}
 }

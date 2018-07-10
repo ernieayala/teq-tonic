@@ -1,43 +1,43 @@
 {
-  "author": "Ernie Ayala <teafortwo.ea@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/ernieayala/teq-tonic/issues"
-  },
-  "contributors": [
-    "Lucky Nguyen <luckyknguyen@gmail.com>"
-  ],
-  "description": "A neat Sass tool set",
-  "devDependencies": {
-    "in-publish": "2.0.0",
-    "npm-bump": "0.0.23"
-  },
-  "eyeglass": {
-    "needs": "*",
-    "exports": "eyeglass-exports.js"
-  },
-  "homepage": "https://ernieayala.github.io/teq-tonic/",
-  "keywords": [
-    "css",
-    "eyeglass-module",
-    "functions",
-    "mixins",
-    "sass",
-    "scss"
-  ],
-  "license": "MIT",
-  "main": "index.js",
-  "name": "teq-tonic",
-  "readme": "./README.md",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ernieayala/teq-tonic.git"
-  },
-  "scripts": {
-    "bump": "not-in-install && npm-bump patch",
-    "cleanInstall": "rm -rf ./node_modules ./package-lock.json && npm i",
-    "docs": "sassdoc core"
-  },
-  "style": "core/_teq-tonic.scss",
-  "title": "Teq-Tonic Tools",
-  "version": "1.0.2-pre"
+	"author": "Ernie Ayala <teafortwo.ea@gmail.com>",
+	"bugs": {
+		"url": "https://github.com/ernieayala/teq-tonic/issues"
+	},
+	"contributors": [
+		"Lucky Nguyen <luckyknguyen@gmail.com>"
+	],
+	"description": "A neat Sass tool set",
+	"devDependencies": {
+		"in-publish": "2.0.0",
+		"npm-bump": "0.0.23"
+	},
+	"eyeglass": {
+		"needs": "*",
+		"exports": "eyeglass-exports.js"
+	},
+	"homepage": "https://ernieayala.github.io/teq-tonic/",
+	"keywords": [
+		"css",
+		"eyeglass-module",
+		"functions",
+		"mixins",
+		"sass",
+		"scss"
+	],
+	"license": "MIT",
+	"main": "index.js",
+	"name": "teq-tonic",
+	"readme": "./README.md",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ernieayala/teq-tonic.git"
+	},
+	"scripts": {
+		"bump": "not-in-install && npm-bump patch",
+		"cleanInstall": "rm -rf ./node_modules ./package-lock.json && npm i",
+		"docs": "sassdoc core"
+	},
+	"style": "core/_teq-tonic.scss",
+	"title": "Teq-Tonic Tools",
+	"version": "1.0.2-pre"
 }

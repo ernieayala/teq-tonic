@@ -3,19 +3,19 @@
 /// @name rgba-map
 /// @group color
 /// @access private
-/// @param {map} $colors [null] - A palette of colors.
+/// @param {map} $palette [null] - A palette of colors.
 /// @example scss
 ///   $colors-rgba: rgba-map($palette);
 ///
 
-@function rgba-map($colors: null) {
-	$color-map: ();
+@function rgba-map($palette: null) {
+	$rgba-map: ();
 
-	@each $color in $colors {
+	@each $color in $palette {
 		$color-name: nth($color, 1);
 		$color-rgb: #{red(nth($color, 2)), green(nth($color, 2)), blue(nth($color, 2))};
-		$color-map: map-merge($color-map, ($color-name: $color-rgb));
+		$rgba-map: map-merge($rgba-map, ($color-name: $color-rgb));
 	}
 
-	@return $color-map;
+	@return $rgba-map;
 }
