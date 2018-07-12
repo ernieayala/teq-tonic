@@ -2,7 +2,7 @@
 /// Builds border color util classes.
 /// @name util-colors-border
 /// @group util-class
-/// @require {function} border
+/// @require {function} b
 /// @require {function} class
 /// @require {variable} $_palette-util
 ///
@@ -12,23 +12,23 @@
 		$color-name: nth($color, 1);
 
 		#{class("util") + "-b-" + $color-name} {
-			border: border($color-name) !important;
+			border: b($color-name) !important;
 		}
 
 		#{class("util") + "-bt-" + $color-name} {
-			border-top: border($color-name) !important;
+			border-top: b($color-name) !important;
 		}
 
 		#{class("util") + "-br-" + $color-name} {
-			border-right: border($color-name) !important;
+			border-right: b($color-name) !important;
 		}
 
 		#{class("util") + "-bb-" + $color-name} {
-			border-bottom: border($color-name) !important;
+			border-bottom: b($color-name) !important;
 		}
 
 		#{class("util") + "-bl-" + $color-name} {
-			border-left: border($color-name) !important;
+			border-left: b($color-name) !important;
 		}
 	}
 }

@@ -1,12 +1,12 @@
 ///
-/// Base css include.
+/// Sets sizing and sets up :root css variables.
 /// @name base
 /// @group app-setup
 /// @example scss
 ///   @include base;
 ///
 
-@mixin base {
+@mixin base() {
 	* {
 		box-sizing: border-box;
 	}

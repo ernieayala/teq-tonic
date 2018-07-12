@@ -1,17 +1,17 @@
 ///
 /// Opacity function that calls to the `$_default-opacity` map.
-/// @name opacity
+/// @name o
 /// @group helper
 /// @param {string} $lightness [null] - Choose an opacity setting.
 /// @example
-///   opacity: opacity("lighter");
+///   opacity: o("lighter");
 ///
 ///   // output
 ///   opacity: 0.5;
 /// @require {variable} $_default-opacity
 ///
 
-@function opacity($lightness: null) {
+@function o($lightness: null) {
 	@if not $lightness {
 		@warn "No opacity value entered. Property omitted.";
 		@return null;

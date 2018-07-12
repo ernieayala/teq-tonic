@@ -3,6 +3,7 @@
 /// @name context
 /// @group shadow-dom
 /// @param {map} $selectors [()] - Input a list of selectors.
+/// @param {list} $modifiers [null] - Searches modifiers
 /// @example scss
 ///   @include context(class("alert"), is "focus") {
 ///     property: value;
@@ -10,12 +11,20 @@
 ///
 ///   // output
 ///   .sample-alert.is-focus .child-element
+/// @require {function} has-selector
 /// @require {function} get-setup
+/// @require {function} strip-selector
 /// @require {mixin} toggle
 /// @require {variable} $_namespace-mod
 ///
 
 @mixin context($selectors: (), $modifiers: null) {
+	// toggle
+	@if not get-setup("context") {
+		@include toggle((
+			"context": true));
+	}
+
 	// create context selector
 	$context-selector: "";
 	@each $selector in $selectors {
@@ -27,6 +36,8 @@
 			$context-selector: $context-selector + has-selector($selector);
 		}
 	};
+
+
 
 	// create mod name
 	$mod-selector: "";
@@ -44,7 +55,12 @@
 	}
 
 	@if get-setup("host") {
-		@at-root :host(#{$context-selector}#{$mod-selector}) {
+		$child-selector: "";
+		@if get-setup("child") {
+			$child-selector: get-setup("default-selector");
+		}
+
+		@at-root :host(#{$context-selector}#{$mod-selector}) #{$child-selector} {
 			@content;
 		}
 	} @else {
@@ -52,26 +68,8 @@
 			@content;
 		}
 	}
-}
 
-@function strip-selector($selector) {
-	@if not type-of($selector) == "string" {
-		@return null;
-	}
-
-	$prefix: str-slice($selector, 0, 1);
-
-	@if $prefix == "." or $prefix == "#" {
-		@return str-slice($selector, 2, str-length($selector));
-	}
-
-	@return $selector;
-}
-
-@function has-selector($selector) {
-	@if map-get($_namespace-component, $selector) {
-		@return map-get($_namespace-component, $selector);
-	}
-
-	@return $selector;
+	// toggle
+	@include toggle((
+		"context": false));
 }

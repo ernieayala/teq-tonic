@@ -2,10 +2,10 @@
 /// Color function that calls to the `$_palette-default` map by default.
 /// @name color
 /// @group color
-/// @param {string} $values [null] - Choose a color from a color palette or enter test case for WCAG.
+/// @param {list} $values [null] - Choose a color from a color palette or enter test case for WCAG.
 /// @param {number} $opacity [1] - Change the opacity of the color.
 /// @param {map} $palette [$_palette-default] - Change which palette the color call is to.
-/// @param {boolean} $css-variables [true] - Choose if it's a css variable or rgba value.
+/// @param {boolean} $css-variable [true] - Choose if it's a css variable or rgba value.
 /// @example scss
 ///   background: color("green-50");
 ///   color: color("gray-600", 0.8);
@@ -17,7 +17,7 @@
 /// @require {variable} $_palette-default
 ///
 
-@function color($values: null, $opacity: 1, $palette: $_palette-default, $css-variables: true) {
+@function color($values: null, $opacity: 1, $palette: $_palette-default, $css-variable: true) {
 	@if not $values {
 		@warn "No colors entered. Property omitted.";
 		@return null;
@@ -28,7 +28,7 @@
 		@warn wcag($values, $palette);
 	}
 
-	@if map-has-key($palette, nth($values, 1)) and $css-variables {
+	@if map-has-key($palette, nth($values, 1)) and $css-variable {
 		// If in the palette and a css variable
 		@return #{rgba(unquote("var(--color-" + nth($values, 1) + ")"), $opacity)};
 	} @else if map-has-key($palette, nth($values, 1)) {

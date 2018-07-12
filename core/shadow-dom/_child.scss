@@ -30,10 +30,14 @@
 		$child-selector: $child-selector + get-setup("child-prefix") + nth($selectors, $i);
 	};
 
+	// toggle selector
+	@include toggle(("default-selector": get-setup("default-selector") + $child-selector));
+
 	// output
 	@if not get-setup("host") {
-		@include toggle(("default-selector": get-setup("default-selector") + $child-selector));
 		&#{$child-selector} { @content; }
+	} @else if get-setup("host") {
+		%child-context { @content; }
 	}
 
 	// toggle

@@ -1,17 +1,17 @@
 ///
 /// Z-index function that calls to the `$_default-z-index` map.
-/// @name z-index
+/// @name z
 /// @group helper
 /// @param {string} $layer [null] - Choose a z-index.
 /// @example
-///   z-index: z-index("dropdown");
+///   z: z-index("dropdown");
 ///
 ///   // output
 ///   z-index: 1000;
 /// @require {variable} $_default-z-index
 ///
 
-@function z-index($layer: null) {
+@function z($layer: null) {
 	@if not $layer {
 		@warn "No z-index value entered. Property omitted.";
 		@return null;

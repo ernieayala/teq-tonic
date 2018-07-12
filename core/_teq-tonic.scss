@@ -1,12 +1,14 @@
 // Support
 @import "support/component-setup";
 @import "support/define-modifiers";
+@import "support/has-selector";
 @import "support/get";
 @import "support/luminance";
 @import "support/map-collect";
 @import "support/math";
 @import "support/set";
 @import "support/strip-unit";
+@import "support/strip-selector";
 @import "support/toggle";
 @import "support/update";
 
@@ -30,8 +32,10 @@
 @import "helpers/focus-outline";
 @import "helpers/fonts";
 @import "helpers/input-placeholder";
+@import "helpers/margin";
 @import "helpers/media";
 @import "helpers/opacity";
+@import "helpers/padding";
 @import "helpers/position";
 @import "helpers/pseudo";
 @import "helpers/size";

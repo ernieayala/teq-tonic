@@ -1,17 +1,17 @@
 ///
 /// Border radius function that calls to the `$_default-border-radius` map.
-/// @name border-radius
+/// @name br
 /// @group helper
 /// @param {string} $radius [null] - Choose the size of the border radius.
 /// @example
-///   border-radius: border-radius("sm");
+///   border-radius: br("sm");
 ///
 ///   // output
 ///   border-radius: 0.2rem;
 /// @require {variable} $_default-border-radius
 ///
 
-@function border-radius($radius: null) {
+@function br($radius: null) {
 	@if not $radius {
 		@warn "No radius value entered. Property omitted.";
 		@return null;

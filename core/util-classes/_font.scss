@@ -3,52 +3,52 @@
 /// @name util-font
 /// @group util-class
 /// @require {function} class
-/// @require {function} font-family
-/// @require {function} font-size
+/// @require {function} ff
+/// @require {function} fs
 ///
 
 @mixin util-font {
 	#{class("util") + "-fs-xxs"} {
-		font-size: font-size("xxs") !important;
+		font-size: fs("xxs") !important;
 	}
 
 	#{class("util") + "-fs-xs"} {
-		font-size: font-size("xs") !important;
+		font-size: fs("xs") !important;
 	}
 
 	#{class("util") + "-fs-sm"} {
-		font-size: font-size("sm") !important;
+		font-size: fs("sm") !important;
 	}
 
 	#{class("util") + "-fs-md"} {
-		font-size: font-size("md") !important;
+		font-size: fs("md") !important;
 	}
 
 	#{class("util") + "-fs-lg"} {
-		font-size: font-size("lg") !important;
+		font-size: ffs("lg") !important;
 	}
 
 	#{class("util") + "-fs-xl"} {
-		font-size: font-size("xl") !important;
+		font-size: fs("xl") !important;
 	}
 
 	#{class("util") + "-fs-xxl"} {
-		font-size: font-size("xxl") !important;
+		font-size: fs("xxl") !important;
 	}
 
 	#{class("util") + "-fs-xxxl"} {
-		font-size: font-size("xxxl") !important;
+		font-size: fs("xxxl") !important;
 	}
 
 	#{class("util") + "-fw-regular"} {
-		font-family: font-family("regular") !important;
+		font-family: ff("regular") !important;
 	}
 
 	#{class("util") + "-fw-light"} {
-		font-family: font-family("light") !important;
+		font-family: ff("light") !important;
 	}
 
 	#{class("util") + "-fw-bold"} {
-		font-family: font-family("semibold") !important;
+		font-family: ff("semibold") !important;
 	}
 }

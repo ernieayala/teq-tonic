@@ -33,6 +33,6 @@
 
 	// output host selector
 	@if get-setup("host") {
-		:host(#{get-setup("host-selector")}) { @content; }
+		:host(#{get-setup("default-selector")}) { @content; }
 	}
 }

@@ -1,13 +1,13 @@
 ///
 /// Transition function that calls to the `$_default-transitions` map.
-/// @name transition
+/// @name t
 /// @group helper
 /// @param {string} $props [null] - The properties that need a transition applied.
 /// @param {string} $transition [null] - The transition being applied.
 /// @param {string} $time [time("base")] - The time being applied.
 /// @example
-///   transition: transition(opacity, "link");
-///   transition: transition(opacity, "shift", "slow");
+///   t: transition(opacity, "link");
+///   t: transition(opacity, "shift", "slow");
 ///
 ///   // output
 ///   transition: opacity 0.3s cubic-bezier(0.075, 0.820, 0.165, 1.000);
@@ -16,7 +16,7 @@
 /// @require {variable} $_default-transitions
 ///
 
-@function transition($props: null, $transition: null, $time: "base") {
+@function t($props: null, $transition: null, $time: "base") {
 	$result: ();
 
 	@if not $props {

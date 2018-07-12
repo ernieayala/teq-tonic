@@ -1,5 +1,5 @@
 ///
-/// Create an output of css variables from a color palette.
+/// Outputs css variables from a color palette.
 /// @name css-vars
 /// @group app-setup
 /// @param {map} $palette [null] - A palette of colors.
@@ -22,8 +22,10 @@
 	@if not $palette {
 		@warn "No palette entered. Property omitted.";
 	} @else {
+		// get rgb from hex value and re-map
 		$rgba-map: rgba-map($palette);
 
+		// output the css variable name and the rgb value
 		@each $color in $rgba-map {
 			$color-name: nth($color, 1);
 			$color-value: nth($color, 2);

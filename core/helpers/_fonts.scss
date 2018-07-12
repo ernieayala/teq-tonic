@@ -1,12 +1,12 @@
 ///
 /// Font function that selects font sizes from `$_font-sizes` and the font family from `$_font-family`.
-/// @name font
+/// @name f
 /// @group helper
 /// @param {string} $size [null] - Choose a font size.
 /// @param {string} $family [default] - Choose a font family.
 /// @example
-///   font: font("md");
-///   font: font("md", "semibold");
+///   font: f("md");
+///   font: f("md", "semibold");
 ///
 ///   // output
 ///   font: 1.4rem "SourceSansPro", "Helvetica Neue", "Helvetica", Arial, sans-serif;
@@ -15,7 +15,7 @@
 /// @require {variable} $_font-family
 ///
 
-@function font($size: null, $family: "default") {
+@function f($size: null, $family: "default") {
 	@if not $size {
 		@warn "No font size entered. Property omitted.";
 		@return null;
@@ -32,18 +32,18 @@
 
 ///
 /// Font size function that selects font sizes from `$_font-sizes`.
-/// @name font-size
+/// @name fs
 /// @group helper
-/// @param {string} $font [null] - Choose a font size.
+/// @param {string} $size [null] - Choose a font size.
 /// @example
-///   font-size: font-size("md");
+///   font-size: fs("md");
 ///
 ///   // output
 ///   font-size: 1.4rem;
 /// @require {variable} $_font-sizes
 ///
 
-@function font-size($size: null) {
+@function fs($size: null) {
 	@if not $size {
 		@warn "No font size entered. Property omitted.";
 		@return null;
@@ -57,18 +57,18 @@
 
 ///
 /// Font family function that selects the font family from `$_font-family`.
-/// @name font-family
+/// @name ff
 /// @group helper
 /// @param {string} $family [default] - Choose a font family.
 /// @example
-///   font-family: font-family("semibold");
+///   font-family: ff("semibold");
 ///
 ///   // output
 ///   font-family: "SourceSansProSemibold", "Helvetica Neue", "Helvetica", Arial, sans-serif;
 /// @require {variable} $_font-family
 ///
 
-@function font-family($family: null) {
+@function ff($family: null) {
 	@if not $family {
 		@warn "No font family entered. Property omitted.";
 		@return null;

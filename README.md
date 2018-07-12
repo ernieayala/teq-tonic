@@ -226,6 +226,7 @@ If you want to add a variable...
     "button": ".teq-btn"
   )
 );
+```
 
 Of course you can combine both of these.
 ``` sass

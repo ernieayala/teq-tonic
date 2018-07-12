@@ -1,196 +1,196 @@
-///
-/// Builds host context class names because :host-context is not supported across all browsers.
-/// @name host-context
-/// @group shadow-dom
-/// @param {list} $context [null] - The context of the component.
-/// @param {list} $component [null] - Name of the component.
-/// @param {list} $modifier [null] - Any modifiers on the element. (append and modifier)
-/// @param {list} $options [null] - Toggle if it's a host element (prefix-append - change the default child prefix, prefix-modifier - change the default mod prefix, modifier-prefix - change the default component prefix, shadow-root - toggle if the component is the shadow root, compile-class- toggle if the class needs a forced compilation, remove-host - removes the fallback output, custom-selector - complete custom selector without calling to the namespace).
-/// @example scss
-///   build-context-selector($context, $component, $modifiers, $host-options);
-/// @require {function} build-context-selector
-/// @require {function} build-component-selector
-/// @require {function} get-setup
-/// @require {function} update
-///
+// ///
+// /// Builds host context class names because :host-context is not supported across all browsers.
+// /// @name host-context
+// /// @group shadow-dom
+// /// @param {list} $context [null] - The context of the component.
+// /// @param {list} $component [null] - Name of the component.
+// /// @param {list} $modifier [null] - Any modifiers on the element. (append and modifier)
+// /// @param {list} $options [null] - Toggle if it's a host element (prefix-append - change the default child prefix, prefix-modifier - change the default mod prefix, modifier-prefix - change the default component prefix, shadow-root - toggle if the component is the shadow root, compile-class- toggle if the class needs a forced compilation, remove-host - removes the fallback output, custom-selector - complete custom selector without calling to the namespace).
+// /// @example scss
+// ///   build-context-selector($context, $component, $modifiers, $host-options);
+// /// @require {function} build-context-selector
+// /// @require {function} build-component-selector
+// /// @require {function} get-setup
+// /// @require {function} update
+// ///
 
-@mixin host-context($context: null, $component: null, $modifiers: null, $host-options: null) {
-	@warn "Host-context";
-	// @if not $context { @error "Host context selector(s) needs to be passed in!"; }
+// @mixin host-context($context: null, $component: null, $modifiers: null, $host-options: null) {
+// 	@warn "Host-context";
+// 	// @if not $context { @error "Host context selector(s) needs to be passed in!"; }
 
-	// $needs-context: false;
-	// @each $arg in $_settings-context {
-	// 	@if nth($context, 1) == $arg or "all" == $arg { $needs-context: true; }
-	// }
+// 	// $needs-context: false;
+// 	// @each $arg in $_settings-context {
+// 	// 	@if nth($context, 1) == $arg or "all" == $arg { $needs-context: true; }
+// 	// }
 
-	// @if $needs-context {
-	// 	$host-options-defaults: ("prefix-append": get-setup("child-prefix"), "prefix-modifier": get-setup("modifier-prefix"), "shadow-root": false, "compile-class": false, "remove-host": false, "clear-host": false, "custom-selector": null);
-	// 	$host-options: update($host-options-defaults, $host-options);
+// 	// @if $needs-context {
+// 	// 	$host-options-defaults: ("prefix-append": get-setup("child-prefix"), "prefix-modifier": get-setup("modifier-prefix"), "shadow-root": false, "compile-class": false, "remove-host": false, "clear-host": false, "custom-selector": null);
+// 	// 	$host-options: update($host-options-defaults, $host-options);
 
-	// 	// Build context selector
-	// 	$context-selector: build-context-selector($context, $component, $modifiers, $host-options);
+// 	// 	// Build context selector
+// 	// 	$context-selector: build-context-selector($context, $component, $modifiers, $host-options);
 
-	// 	// Build component selector
-	// 	$component-selector: build-component-selector($component, $host-options);
+// 	// 	// Build component selector
+// 	// 	$component-selector: build-component-selector($component, $host-options);
 
-	// 	// Build host context selector
-	// 	$host-context-selector: build-context-selector($context, $component, $modifiers, $host-options, $host: true);
+// 	// 	// Build host context selector
+// 	// 	$host-context-selector: build-context-selector($context, $component, $modifiers, $host-options, $host: true);
 
-	// 	// Default Selector
-	// 	#{$context-selector} #{$component-selector} { @content; }
+// 	// 	// Default Selector
+// 	// 	#{$context-selector} #{$component-selector} { @content; }
 
-	// 	// Host Selector
-	// 	@if not map-get($host-options, "clear-host") {
-	// 		@if map-get($host-options, "shadow-root") {
-	// 			@if map-get($host-options, "remove-host") { #{$host-context-selector} { @content; } }
-	// 			@at-root :host(#{$host-context-selector}) { @content; }
-	// 		} @else {
-	// 			@at-root :host(#{$host-context-selector}) #{$component-selector} { @content; }
-	// 		}
-	// 	}
-	// }
-}
+// 	// 	// Host Selector
+// 	// 	@if not map-get($host-options, "clear-host") {
+// 	// 		@if map-get($host-options, "shadow-root") {
+// 	// 			@if map-get($host-options, "remove-host") { #{$host-context-selector} { @content; } }
+// 	// 			@at-root :host(#{$host-context-selector}) { @content; }
+// 	// 		} @else {
+// 	// 			@at-root :host(#{$host-context-selector}) #{$component-selector} { @content; }
+// 	// 		}
+// 	// 	}
+// 	// }
+// }
 
-///
-/// Builds the context selector for host context.
-/// @name build-context-selector
-/// @group shadow-dom
-/// @access private
-/// @param {list} $context [null] - The context of the component.
-/// @param {list} $component [null] - Name of the component.
-/// @param {list} $modifier [null] - Any modifiers on the element.
-/// @param {map} $args [null] - Chain in the args.
-/// @param {boolean} $host [null] - Toggle if it's a host element.
-/// @example scss
-///   build-context-selector($context, $component, $modifiers, $host-options);
-/// @require {function} append-modifiers
-///
+// ///
+// /// Builds the context selector for host context.
+// /// @name build-context-selector
+// /// @group shadow-dom
+// /// @access private
+// /// @param {list} $context [null] - The context of the component.
+// /// @param {list} $component [null] - Name of the component.
+// /// @param {list} $modifier [null] - Any modifiers on the element.
+// /// @param {map} $args [null] - Chain in the args.
+// /// @param {boolean} $host [null] - Toggle if it's a host element.
+// /// @example scss
+// ///   build-context-selector($context, $component, $modifiers, $host-options);
+// /// @require {function} append-modifiers
+// ///
 
-@function build-context-selector($context: null, $component: null, $modifier: null, $args: null, $host: false) {
-	$selectors: ();
-	$prefix-type-append: map-get($args, "prefix-append");
-	$prefix-type-modifier: map-get($args, "prefix-modifier");
+// @function build-context-selector($context: null, $component: null, $modifier: null, $args: null, $host: false) {
+// 	$selectors: ();
+// 	$prefix-type-append: map-get($args, "prefix-append");
+// 	$prefix-type-modifier: map-get($args, "prefix-modifier");
 
-	@if $host {
-		@each $selector in $context { $selectors: append($selectors, unquote($selector)); }
-		$selectors: append-modifiers($context, $component, $selectors, $modifier, $args, "append", $prefix-type-append, $host);
-		$selectors: append-modifiers($context, $component, $selectors, $modifier, $args, "modifier", $prefix-type-modifier, $host);
-	} @else {
-		@each $selector in $context { $selectors: append($selectors, class($selector)); }
-		$selectors: append-modifiers($context, $component, $selectors, $modifier, $args, "append", $prefix-type-append);
-		$selectors: append-modifiers($context, $component, $selectors, $modifier, $args, "modifier", $prefix-type-modifier);
-		$selectors: selector-nest(#{$selectors});
-	}
+// 	@if $host {
+// 		@each $selector in $context { $selectors: append($selectors, unquote($selector)); }
+// 		$selectors: append-modifiers($context, $component, $selectors, $modifier, $args, "append", $prefix-type-append, $host);
+// 		$selectors: append-modifiers($context, $component, $selectors, $modifier, $args, "modifier", $prefix-type-modifier, $host);
+// 	} @else {
+// 		@each $selector in $context { $selectors: append($selectors, class($selector)); }
+// 		$selectors: append-modifiers($context, $component, $selectors, $modifier, $args, "append", $prefix-type-append);
+// 		$selectors: append-modifiers($context, $component, $selectors, $modifier, $args, "modifier", $prefix-type-modifier);
+// 		$selectors: selector-nest(#{$selectors});
+// 	}
 
-	@return $selectors;
-}
+// 	@return $selectors;
+// }
 
-///
-/// Builds the component selector for host context.
-/// @name build-component-selector
-/// @group shadow-dom
-/// @access private
-/// @param {list} $component [null] - Name of the component.
-/// @param {map} $args [null] - Chain in the args.
-/// @param {boolean} $host [null] - Toggle if it's a host element.
-/// @example scss
-///   build-component-selector($component, $host-options);
-///
+// ///
+// /// Builds the component selector for host context.
+// /// @name build-component-selector
+// /// @group shadow-dom
+// /// @access private
+// /// @param {list} $component [null] - Name of the component.
+// /// @param {map} $args [null] - Chain in the args.
+// /// @param {boolean} $host [null] - Toggle if it's a host element.
+// /// @example scss
+// ///   build-component-selector($component, $host-options);
+// ///
 
-@function build-component-selector($component: null, $args: null, $host: false) {
-	$component-selector: "";
-	$component-prefix: get-setup("prefix");
+// @function build-component-selector($component: null, $args: null, $host: false) {
+// 	$component-selector: "";
+// 	$component-prefix: get-setup("prefix");
 
-	@if map-get($args, "shadow-root") and $host {
-		@if map-get($args, "custom-selector") {
-			$component-selector: $component-prefix + map-get($args, "custom-selector");
-		} @else {
-			$component-selector: $component-prefix + $component;
-		}
-	} @else {
-		@if map-get($args, "compile-class") { $component: class($component); }
-		@each $selector in $component { $component-selector: $component-selector + $selector; }
-		$component-select: selector-append($component-selector);
-	}
+// 	@if map-get($args, "shadow-root") and $host {
+// 		@if map-get($args, "custom-selector") {
+// 			$component-selector: $component-prefix + map-get($args, "custom-selector");
+// 		} @else {
+// 			$component-selector: $component-prefix + $component;
+// 		}
+// 	} @else {
+// 		@if map-get($args, "compile-class") { $component: class($component); }
+// 		@each $selector in $component { $component-selector: $component-selector + $selector; }
+// 		$component-select: selector-append($component-selector);
+// 	}
 
-	@return $component-selector;
-}
+// 	@return $component-selector;
+// }
 
-///
-/// Appends modifiers on host context elements.
-/// @name append-modifiers
-/// @group shadow-dom
-/// @access private
-/// @param {list} $context [null] - The context of the component.
-/// @param {list} $component [null] - Name of the component.
-/// @param {list} $selectors [null] - List of selectors to chain.
-/// @param {list} $modifier [null] - Any modifiers on the element.
-/// @param {map} $args [null] - Chain in the args.
-/// @param {list} $modifier-type [null] - Targets selectors 1 - 10 to apply the modifier to.
-/// @param {string} $prefix [null] - If there is a custom prefix.
-/// @param {boolean} $host [null] - Toggle if it's a host element.
-/// @example scss
-///   append-modifiers($context, $component, $selectors, $modifier, $args, "append", $prefix-type-append);
-/// @require {function} clean-context-selector
-///
+// ///
+// /// Appends modifiers on host context elements.
+// /// @name append-modifiers
+// /// @group shadow-dom
+// /// @access private
+// /// @param {list} $context [null] - The context of the component.
+// /// @param {list} $component [null] - Name of the component.
+// /// @param {list} $selectors [null] - List of selectors to chain.
+// /// @param {list} $modifier [null] - Any modifiers on the element.
+// /// @param {map} $args [null] - Chain in the args.
+// /// @param {list} $modifier-type [null] - Targets selectors 1 - 10 to apply the modifier to.
+// /// @param {string} $prefix [null] - If there is a custom prefix.
+// /// @param {boolean} $host [null] - Toggle if it's a host element.
+// /// @example scss
+// ///   append-modifiers($context, $component, $selectors, $modifier, $args, "append", $prefix-type-append);
+// /// @require {function} clean-context-selector
+// ///
 
-@function append-modifiers($context: null, $component: null, $selectors: null, $modifier: null, $args: null, $modifier-type: null, $prefix: null, $host: false) {
-	$output-selector: "";
-	$mod-append: ($modifier-type);
-	@for $i from 2 through 10 { $mod-append: append($mod-append, $modifier-type + $i); }
+// @function append-modifiers($context: null, $component: null, $selectors: null, $modifier: null, $args: null, $modifier-type: null, $prefix: null, $host: false) {
+// 	$output-selector: "";
+// 	$mod-append: ($modifier-type);
+// 	@for $i from 2 through 10 { $mod-append: append($mod-append, $modifier-type + $i); }
 
-	@each $mod in $mod-append {
-		$i: index($modifier, $mod);
-		$j: index($mod-append, $mod);
+// 	@each $mod in $mod-append {
+// 		$i: index($modifier, $mod);
+// 		$j: index($mod-append, $mod);
 
-		@if $i and $i + 1 <= length($modifier) {
-			@if $j <= length($selectors) {
-				@if $host and $modifier-type == "modifier" {
-					$selectors: $selectors + ".context-modifier-" + nth($modifier, $i + 1);
-				} @else {
-					$appended: nth($selectors, $j) + $prefix + nth($modifier, $i + 1);
-					$selectors: set-nth($selectors, $j, $appended);
-				}
-			} @else {
-				@warn "Please select the correct selector! '#{nth($modifier, $i + 1)}' will not append to anything.";
-			}
-		}
-	}
+// 		@if $i and $i + 1 <= length($modifier) {
+// 			@if $j <= length($selectors) {
+// 				@if $host and $modifier-type == "modifier" {
+// 					$selectors: $selectors + ".context-modifier-" + nth($modifier, $i + 1);
+// 				} @else {
+// 					$appended: nth($selectors, $j) + $prefix + nth($modifier, $i + 1);
+// 					$selectors: set-nth($selectors, $j, $appended);
+// 				}
+// 			} @else {
+// 				@warn "Please select the correct selector! '#{nth($modifier, $i + 1)}' will not append to anything.";
+// 			}
+// 		}
+// 	}
 
-	@if $host {
-		$output-selector: clean-context-selector($context, $component, $selectors, $args, $modifier-type);
-	} @else {
-		$output-selector: $selectors;
-	}
+// 	@if $host {
+// 		$output-selector: clean-context-selector($context, $component, $selectors, $args, $modifier-type);
+// 	} @else {
+// 		$output-selector: $selectors;
+// 	}
 
-	@return $output-selector;
-}
+// 	@return $output-selector;
+// }
 
-///
-/// Cleans the context selector in preperation for context class output.
-/// @name clean-context-selector
-/// @group shadow-dom
-/// @access private
-/// @param {list} $context [null] - The context of the component.
-/// @param {list} $component [null] - Name of the component.
-/// @param {list} $selectors [null] - List of selectors to chain.
-/// @param {map} $args [null] - Chain in the args.
-/// @param {list} $modifier-type [null] - Targets selectors 1 - 10 to apply the modifier to.
-/// @example scss
-///   clean-context-selector($context, $component, $selectors, $args, $modifier-type);
-/// @require {function} build-component-selector
-///
+// ///
+// /// Cleans the context selector in preperation for context class output.
+// /// @name clean-context-selector
+// /// @group shadow-dom
+// /// @access private
+// /// @param {list} $context [null] - The context of the component.
+// /// @param {list} $component [null] - Name of the component.
+// /// @param {list} $selectors [null] - List of selectors to chain.
+// /// @param {map} $args [null] - Chain in the args.
+// /// @param {list} $modifier-type [null] - Targets selectors 1 - 10 to apply the modifier to.
+// /// @example scss
+// ///   clean-context-selector($context, $component, $selectors, $args, $modifier-type);
+// /// @require {function} build-component-selector
+// ///
 
-@function clean-context-selector($context: null, $component: null, $selectors: null, $args: null, $modifier-type: null) {
-	$context-selector: "";
+// @function clean-context-selector($context: null, $component: null, $selectors: null, $args: null, $modifier-type: null) {
+// 	$context-selector: "";
 
-	@if $modifier-type == "append" {
-		@each $selector in $selectors { $context-selector: $context-selector + ".context-" + $selector; }
-	} @else {
-		$host-selector: "";
-		@if map-get($args, "shadow-root") { $host-selector: build-component-selector($component, $args, $host: true); }
-		$context-selector: $host-selector + $selectors;
-	}
+// 	@if $modifier-type == "append" {
+// 		@each $selector in $selectors { $context-selector: $context-selector + ".context-" + $selector; }
+// 	} @else {
+// 		$host-selector: "";
+// 		@if map-get($args, "shadow-root") { $host-selector: build-component-selector($component, $args, $host: true); }
+// 		$context-selector: $host-selector + $selectors;
+// 	}
 
-	@return $context-selector;
-}
+// 	@return $context-selector;
+// }
