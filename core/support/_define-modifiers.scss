@@ -3,12 +3,11 @@
 /// @name define-modifiers
 /// @group support
 /// @access private
-/// @param {map} $local [()] - A list of updated mod settings from `$_settings-mods`.
+/// @param {map} $local [()] - A list of updated mod settings from `$_mods`.
 /// @example scss
-///   @include define-modifiers($_settings-mods);
+///   @include define-modifiers($_mods);
 /// @require {function} get-setup
 /// @require {variable} $_mods
-/// @require {variable} $_settings-mods
 ///
 
 @mixin define-modifiers($local: ()) {

@@ -6,21 +6,13 @@
 
 $_settings: () !global;
 
-///
-/// Variable map for the context settings.
-/// @group app-setup
-/// @access public
-///
+// ///
+// /// Variable map for the context settings.
+// /// @group app-setup
+// /// @access public
+// ///
 
-$_settings-context: ( "all" ) !global;
-
-///
-/// Variable map for the mod settings.
-/// @group app-setup
-/// @access public
-///
-
-$_settings-mods: ( "all": true ) !global;
+// $_settings-context: ( "all" ) !global;
 
 ///
 /// Variable map for prefix namespace settings.

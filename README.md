@@ -181,6 +181,11 @@ Current available settings.
     "lighter": 0.5,
     "lightest": 0.3
   )
+  "prefixes" (
+    "prefix": "teq-",
+    "child-prefix": "__",
+    "modifier-prefix": "--"
+  )
   "space" (
     "pf": 0.1rem,
     "base": 0.4rem,

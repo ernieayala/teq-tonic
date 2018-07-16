@@ -20,6 +20,7 @@
 @mixin component($component: null, $options: null) {
 	// set up options
 	$options-defaults: ("host": false, "host-element": null, "prefix": get-setup("prefix"));
+
 	$options: update($options-defaults, $options);
 
 	// set up standard selector
@@ -33,6 +34,6 @@
 
 	// output host selector
 	@if get-setup("host") {
-		:host(#{get-setup("default-selector")}) { @content; }
+		:host(#{get-setup("host-selector")}) { @content; }
 	}
 }

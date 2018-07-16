@@ -48,6 +48,7 @@
 /// @require {variable} $_mods
 /// @require {variable} $_namespace-component
 /// @require {variable} $_palette-default
+/// @require {variable} $_settings-prefixes
 ///
 
 @mixin settings($values: null) {
@@ -70,6 +71,7 @@
 			@if $key == "mods" { $_mods: map-merge($_mods, $value) !global; }
 			@if $key == "namespace" { $_namespace-component: map-merge($_namespace-component, $value) !global; }
 			@if $key == "opacity" { $_default-opacity: map-merge($_default-opacity, $value) !global; }
+			@if $key == "prefixes" { $_settings-prefixes: map-merge($_settings-prefixes, $value) !global; $_setup: map-merge($_setup, $value) !global; }
 			@if $key == "space" { $_default-space: map-merge($_default-space, $value) !global; }
 			@if $key == "transitions" { $_default-transitions: map-merge($_default-transitions, $value) !global; }
 			@if $key == "z-index" { $_default-z-index: map-merge($_default-z-index, $value) !global; }

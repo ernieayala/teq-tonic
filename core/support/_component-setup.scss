@@ -9,7 +9,7 @@
 ///   @include component-setup("alert", ("host": true));
 /// @require {function} class
 /// @require {mixin} define-modifiers
-/// @require {variable} $_settings-mods
+/// @require {variable} $_mods
 /// @require {variable} $_setup
 ///
 
@@ -51,5 +51,5 @@
 	$_this: class($component) !global;
 
 	// difine modifiers in mods map
-	@include define-modifiers($_settings-mods);
+	@include define-modifiers($_mods);
 }
