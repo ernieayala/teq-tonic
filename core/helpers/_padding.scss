@@ -14,5 +14,5 @@
 ///
 
 @function p($padding: null) {
-	@return space($value);
+	@return space($padding);
 }

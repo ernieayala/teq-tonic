@@ -24,7 +24,7 @@
 	}
 
 	// WCAG contrast check
-	@if length($values) > 1 {
+	@if length($values) > 1 and get-setup("debug") {
 		@warn wcag($values, $palette);
 	}
 
