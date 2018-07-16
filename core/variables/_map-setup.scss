@@ -1,4 +1,16 @@
 ///
+/// Variable map for prefix namespace settings.
+/// @group vars
+/// @access private
+///
+
+$_setup-prefixes: (
+	"prefix": "teq-",
+	"child-prefix": "__",
+	"modifier-prefix": "--"
+) !global;
+
+///
 /// Variable map for setup namespaces.
 /// @group vars
 /// @access private
@@ -37,13 +49,13 @@ $_setup-toggles: (
 /// @group vars
 /// @access private
 /// @require {function} map-collect
+/// @require {variable} $_setup-prefixes
 /// @require {variable} $_setup-namespace
 /// @require {variable} $_setup-toggles
-/// @require {variable} $_settings-prefixes
 ///
 
 $_setup: map-collect(
 	$_setup-namespace,
 	$_setup-toggles,
-	$_settings-prefixes
+	$_setup-prefixes
 ) !global;

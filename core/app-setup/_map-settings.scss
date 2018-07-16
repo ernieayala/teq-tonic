@@ -13,15 +13,3 @@ $_settings: () !global;
 // ///
 
 // $_settings-context: ( "all" ) !global;
-
-///
-/// Variable map for prefix namespace settings.
-/// @group app-setup
-/// @access public
-///
-
-$_settings-prefixes: (
-	"prefix": "teq-",
-	"child-prefix": "__",
-	"modifier-prefix": "--"
-) !global;
