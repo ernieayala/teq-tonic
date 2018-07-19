@@ -48,6 +48,7 @@
 			$key: nth($modifiers, $i);
 			$value: nth($modifiers, $i + 1);
 
+			@if $key == "child" { $mod-selector: $mod-selector + map-get($_setup-prefixes, "child-prefix") + $value; }
 			@if $key == "mod" { $mod-selector: $mod-selector + map-get($_namespace-mod, "mod") + "-" + $value; }
 			@if $key == "is" { $mod-selector: $mod-selector + map-get($_namespace-mod, "is") + "-" + $value; }
 			@if $key == "has" { $mod-selector: $mod-selector + map-get($_namespace-mod, "has") + "-" + $value; }
