@@ -48,9 +48,9 @@
 			$key: nth($modifiers, $i);
 			$value: nth($modifiers, $i + 1);
 
-			@if $key == "mod" { $mod-selector: map-get($_namespace-mod, "mod") + "-" + $value; }
-			@if $key == "is" { $mod-selector: map-get($_namespace-mod, "is") + "-" + $value; }
-			@if $key == "has" { $mod-selector: map-get($_namespace-mod, "has") + "-" + $value; }
+			@if $key == "mod" { $mod-selector: $mod-selector + map-get($_namespace-mod, "mod") + "-" + $value; }
+			@if $key == "is" { $mod-selector: $mod-selector + map-get($_namespace-mod, "is") + "-" + $value; }
+			@if $key == "has" { $mod-selector: $mod-selector + map-get($_namespace-mod, "has") + "-" + $value; }
 		}
 	}
 
