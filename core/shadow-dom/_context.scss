@@ -41,6 +41,7 @@
 
 	// create mod name
 	$mod-selector: "";
+	$pseudo-selector: "";
 	@each $modifier in $modifiers {
 		$i: index($modifiers, $modifier);
 
@@ -50,8 +51,14 @@
 
 			@if $key == "child" { $mod-selector: $mod-selector + map-get($_setup-prefixes, "child-prefix") + $value; }
 			@if $key == "mod" { $mod-selector: $mod-selector + map-get($_namespace-mod, "mod") + "-" + $value; }
-			@if $key == "is" { $mod-selector: $mod-selector + map-get($_namespace-mod, "is") + "-" + $value; }
 			@if $key == "has" { $mod-selector: $mod-selector + map-get($_namespace-mod, "has") + "-" + $value; }
+			@if $key == "is" {
+				@if map-has-key($_pseudo-selector, $value) {
+					$pseudo-selector: $mod-selector + ":" + $value;
+				}
+
+				$mod-selector: $mod-selector + map-get($_namespace-mod, "is") + "-" + $value;
+			}
 		}
 	}
 
@@ -64,9 +71,24 @@
 		@at-root :host(#{$context-selector}#{$mod-selector}) #{$child-selector} {
 			@content;
 		}
+
+		@if str-length($pseudo-selector) >= 1 {
+			@at-root :host(#{$context-selector}#{$pseudo-selector}) #{$child-selector} {
+				@content;
+			}
+		}
 	} @else {
-		#{$context-selector}#{$mod-selector} & {
-			@content;
+
+
+		@if str-length($pseudo-selector) >= 1 {
+			#{$context-selector}#{$pseudo-selector} &,
+			#{$context-selector}#{$mod-selector} & {
+				@content;
+			}
+		} @else {
+			#{$context-selector}#{$mod-selector} & {
+				@content;
+			}
 		}
 	}
 
