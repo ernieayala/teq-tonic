@@ -36,6 +36,7 @@
 ///       "base": 0.5rem
 ///     )
 ///   );
+/// @require {variable} $_contexts
 /// @require {variable} $_default-animation-time
 /// @require {variable} $_default-border-radius
 /// @require {variable} $_default-media-queries
@@ -66,6 +67,7 @@
 			@if $key == "animation-time" { $_default-animation-time: map-merge($_default-animation-time, $value) !global; }
 			@if $key == "border-radius" { $_default-border-radius: map-merge($_default-border-radius, $value) !global; }
 			@if $key == "color" { $_palette-default: map-merge($_palette-default, $value) !global; }
+			@if $key == "context" { $_contexts: map-merge($_contexts, $value) !global; }
 			@if $key == "font-sizes" { $_font-sizes: map-merge($_font-sizes, $value) !global; }
 			@if $key == "font-family" { $_font-family: map-merge($_font-family, $value) !global; }
 			@if $key == "media-queries" { $_default-media-queries: map-merge($_default-media-queries, $value) !global; }

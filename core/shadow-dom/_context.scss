@@ -31,6 +31,12 @@
 			"default-selector-stored": get-setup("default-selector")));
 	}
 
+	// get contexts
+	$component-contexts: ();
+	@if map-get($_contexts, get-setup("current-component")) {
+		$component-contexts: map-get($_contexts, get-setup("current-component"));
+	}
+
 	// create context selector
 	$context-selector: "";
 	@each $selector in $selectors {
@@ -66,31 +72,34 @@
 		}
 	}
 
-	@if get-setup("host") {
-		$child-selector: "";
+	// output
+	@if map-get($_contexts, "all") or map-get($component-contexts, "all") or map-get($component-contexts, $selectors) {
+		@if get-setup("host") {
+			$child-selector: "";
 
-		@if get-setup("child") {
-			$child-selector: get-setup("default-selector");
-		}
+			@if get-setup("child") {
+				$child-selector: get-setup("default-selector");
+			}
 
-		@at-root :host(#{$context-selector}#{$mod-selector}) #{$child-selector} {
-			@content;
-		}
-
-		@if str-length($pseudo-selector) >= 1 {
-			@at-root :host(#{$context-selector}#{$pseudo-selector}) #{$child-selector} {
+			@at-root :host(#{$context-selector}#{$mod-selector}) #{$child-selector} {
 				@content;
 			}
-		}
-	} @else {
-		@if str-length($pseudo-selector) >= 1 {
-			#{$context-selector}#{$pseudo-selector} &,
-			#{$context-selector}#{$mod-selector} & {
-				@content;
+
+			@if str-length($pseudo-selector) >= 1 {
+				@at-root :host(#{$context-selector}#{$pseudo-selector}) #{$child-selector} {
+					@content;
+				}
 			}
 		} @else {
-			#{$context-selector}#{$mod-selector} & {
-				@content;
+			@if str-length($pseudo-selector) >= 1 {
+				#{$context-selector}#{$pseudo-selector} &,
+				#{$context-selector}#{$mod-selector} & {
+					@content;
+				}
+			} @else {
+				#{$context-selector}#{$mod-selector} & {
+					@content;
+				}
 			}
 		}
 	}
