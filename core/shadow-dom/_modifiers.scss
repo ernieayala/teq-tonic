@@ -129,9 +129,14 @@
 @mixin mod($modifier: null, $options: null) {
 	// toggle
 	@include toggle((
-		"mod": true,
-		"default-selector": get-setup("default-selector-stored"),
-		"host-selector": get-setup("host-selector-stored")));
+		"mod": true));
+
+	// toggle
+	@if not get-setup("child") {
+		@include toggle((
+			"default-selector-stored": get-setup("default-selector"),
+			"host-selector-stored": get-setup("host-selector")));
+	}
 
 	// get mods for the component
 	$component-mods: ();
@@ -149,7 +154,7 @@
 
 	// output
 	@if map-get($_mods, "all") or map-get($component-mods, "all") or map-get($component-mods, $modifier) {
-		@if get-setup("host") {
+		@if get-setup("host") and not get-setup("child") {
 			$host-selector-reset: get-setup("host-selector");
 
 			@if map-get($options, "verbose") {
@@ -174,8 +179,13 @@
 	}
 
 	// toggle
+	@if not get-setup("child") {
+		@include toggle((
+			"default-selector": get-setup("default-selector-stored"),
+			"host-selector-stored": get-setup("host-selector")));
+	}
+
+	// toggle
 	@include toggle((
-		"mod": false,
-		"default-selector": get-setup("default-selector-stored"),
-		"host-selector-stored": get-setup("host-selector")));
+		"mod": false));
 }
