@@ -23,9 +23,9 @@ $_font-sizes: (
 ///
 
 $_font-family: (
-	"regular": "SourceSansPro",
-	"light": "SourceSansProLight",
-	"semibold": "SourceSansProSemibold",
-	"bold": "SourceSansProBold",
-	"default": "SourceSansPro"
+	"regular": "\"SourceSansPro\", \"Helvetica Neue\", \"Helvetica\", Arial, sans-serif",
+	"light": "\"SourceSansProLight\", \"Helvetica Neue\", \"Helvetica\", Arial, sans-serif",
+	"semibold": "\"SourceSansProSemibold\", \"Helvetica Neue\", \"Helvetica\", Arial, sans-serif",
+	"bold": "\"SourceSansProBold\", \"Helvetica Neue\", \"Helvetica\", Arial, sans-serif",
+	"default": "\"SourceSansPro\", \"Helvetica Neue\", \"Helvetica\", Arial, sans-serif"
 ) !global;
