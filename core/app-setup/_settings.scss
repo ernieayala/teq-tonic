@@ -21,6 +21,8 @@
 ///
 /// `opacity`
 ///
+/// `setup`
+///
 /// `space`
 ///
 /// `transitions`
@@ -75,6 +77,7 @@
 			@if $key == "namespace" { $_namespace-component: map-merge($_namespace-component, $value) !global; }
 			@if $key == "opacity" { $_default-opacity: map-merge($_default-opacity, $value) !global; }
 			@if $key == "prefixes" { $_setup-prefixes: map-merge($_setup-prefixes, $value) !global; $_setup: map-merge($_setup, $value) !global; }
+			@if $key == "setup" { $_setup: map-merge($_setup, $value) !global; }
 			@if $key == "space" { $_default-space: map-merge($_default-space, $value) !global; }
 			@if $key == "transitions" { $_default-transitions: map-merge($_default-transitions, $value) !global; }
 			@if $key == "z-index" { $_default-z-index: map-merge($_default-z-index, $value) !global; }

@@ -1,12 +1,4 @@
 ///
-/// Variable to toggle if css variables are used
-/// @group color
-/// @access public
-///
-
-$_css-variables: true;
-
-///
 /// Color function that calls to the `$_palette-default` map by default.
 /// @name color
 /// @group color
@@ -25,7 +17,7 @@ $_css-variables: true;
 /// @require {variable} $_palette-default
 ///
 
-@function color($values: null, $opacity: 1, $palette: $_palette-default, $css-variable: $_css-variables) {
+@function color($values: null, $opacity: 1, $palette: $_palette-default, $css-variable: get-setup("cssvars")) {
 	@if not $values {
 		@warn "No colors entered. Property omitted.";
 		@return null;
