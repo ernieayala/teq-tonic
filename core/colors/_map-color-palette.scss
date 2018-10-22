@@ -143,25 +143,6 @@ $_palette-red: (
 );
 
 ///
-/// Variable map for the sea green color palette.
-/// @group color
-/// @access public
-///
-
-$_palette-sea-green: (
-	"sea-green-50": #F9FDFD,
-	"sea-green-100": #EEF8F8,
-	"sea-green-200": #D0E6E6,
-	"sea-green-300": #AED8D2,
-	"sea-green-400": #7BC3B4,
-	"sea-green-500": #59B5A0,
-	"sea-green-600": #479180,
-	"sea-green-700": #2C5B50,
-	"sea-green-800": #1A3730,
-	"sea-green-900": #192521
-);
-
-///
 /// Variable map for the yellow color palette.
 /// @group color
 /// @access public
@@ -187,14 +168,12 @@ $_palette-yellow: (
 ///
 
 $_palette-intent: (
-	"negative": #DC143C, // red-500
-	"neutral": #386ACF, // blue-500
-	"positive": #0FBD7D, // green-500
-	"warning": #E57509, // orange-500
-	"primary": #59B5A0, // sea-green-500
-	"default-text": #4A4A4A, // gray-700
-	"default-bg": #E6E9EB, // charcoal-50
-	"context-bg": #F9FDFD // sea-green-50
+	"negative": #DC143C,
+	"neutral": #386ACF,
+	"positive": #0FBD7D,
+	"warning": #E57509,
+	"primary": #59B5A0,
+	"default-text": #4A4A4A
 );
 
 ///
@@ -212,7 +191,6 @@ $_palette-default: map-collect(
 	$_palette-orange,
 	$_palette-purple,
 	$_palette-red,
-	$_palette-sea-green,
 	$_palette-yellow,
 	$_palette-intent
 ) !global;

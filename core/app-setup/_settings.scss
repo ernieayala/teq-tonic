@@ -76,6 +76,7 @@
 			@if $key == "mods" { $_mods: map-merge($_mods, $value) !global; }
 			@if $key == "namespace" { $_namespace-component: map-merge($_namespace-component, $value) !global; }
 			@if $key == "opacity" { $_default-opacity: map-merge($_default-opacity, $value) !global; }
+			@if $key == "palette" { @if type-of($value) == "map" { $_palette-default: map-merge($_palette-default, $value) !global; } @else { @each $palette in $value { $_palette-default: map-merge($_palette-default, $palette) !global; } } }
 			@if $key == "prefixes" { $_setup-prefixes: map-merge($_setup-prefixes, $value) !global; $_setup: map-merge($_setup, $value) !global; }
 			@if $key == "setup" { $_setup: map-merge($_setup, $value) !global; }
 			@if $key == "space" { $_default-space: map-merge($_default-space, $value) !global; }
