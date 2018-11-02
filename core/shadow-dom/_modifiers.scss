@@ -145,7 +145,7 @@
 	}
 
 	// update options
-	$mod-options: ("mod": map-get($_namespace-mod, "mod"), "verbose": false);
+	$mod-options: ("mod": map-get($_namespace-mod, "mod"), "verbose": get-setup("verbose-mod"));
 	$options: update($mod-options, $options);
 
 	// create mod selector

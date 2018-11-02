@@ -45,9 +45,11 @@ $_default-media-queries: (
 ///
 
 $_default-opacity: (
+	"visible": 1,
 	"light": 0.7,
 	"lighter": 0.5,
 	"lightest": 0.3
+	"hidden": 0
 ) !global;
 
 ///
@@ -86,11 +88,11 @@ $_default-transitions: (
 $_default-z-index: (
 	"below": -1,
 	"above": 1,
+	"navbar": 980,
 	"dropdown-backdrop": 990,
-	"navbar": 1000,
 	"dropdown": 1000,
+	"sticky": 1020,
 	"fixed": 1030,
-	"sticky": 1030,
 	"modal-backdrop": 1040,
 	"modal": 1050,
 	"popover": 1060,

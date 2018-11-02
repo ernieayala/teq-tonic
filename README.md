@@ -111,16 +111,6 @@ Current available settings.
     "red-700": #9A0E2A,
     "red-800": #840C24,
     "red-900": #6E0A1E,
-    "sea-green-50": #F9FDFD,
-    "sea-green-100": #EEF8F8,
-    "sea-green-200": #D0E6E6,
-    "sea-green-300": #AED8D2,
-    "sea-green-400": #7BC3B4,
-    "sea-green-500": #59B5A0,
-    "sea-green-600": #479180,
-    "sea-green-700": #2C5B50,
-    "sea-green-800": #1A3730,
-    "sea-green-900": #192521,
     "yellow-50": #FFF8F2,
     "yellow-100": #FBEACE,
     "yellow-200": #F7DCAA,
@@ -136,9 +126,14 @@ Current available settings.
     "positive": #0FBD7D,
     "warning": #E57509,
     "primary": #59B5A0,
-    "default-text": #4A4A4A,
-    "default-bg": #E6E9EB,
-    "context-bg": #F9FDFD
+    "default-text": #4A4A4A
+  )
+  "context" (
+    "all": true,
+    "sample-context": (
+        "all": false,
+        "sample-context": false
+    )
   )
   "font-sizes" (
     "xxxl": 2.4rem,
@@ -152,11 +147,11 @@ Current available settings.
     "default": 1.4rem
   )
   "font-family" (
-    "regular": "SourceSansPro",
-    "light": "SourceSansProLight",
-    "semibold": "SourceSansProSemibold",
-    "bold": "SourceSansProBold",
-    "default": "SourceSansPro"
+    "regular": "\"SourceSansPro\", \"Helvetica Neue\", \"Helvetica\", Arial, sans-serif",
+    "light": "\"SourceSansProLight\", \"Helvetica Neue\", \"Helvetica\", Arial, sans-serif",
+    "semibold": "\"SourceSansProSemibold\", \"Helvetica Neue\", \"Helvetica\", Arial, sans-serif",
+    "bold": "\"SourceSansProBold\", \"Helvetica Neue\", \"Helvetica\", Arial, sans-serif",
+    "default": "\"SourceSansPro\", \"Helvetica Neue\", \"Helvetica\", Arial, sans-serif"
   )
   "media-queries" (
     "for-phone-only": "(max-width: 599px)",
@@ -177,14 +172,21 @@ Current available settings.
     "util": ".util"
   )
   "opacity" (
+    "visible": 1,
     "light": 0.7,
     "lighter": 0.5,
     "lightest": 0.3
+    "hidden": 0
   )
   "prefixes" (
     "prefix": "teq-",
     "child-prefix": "__",
     "modifier-prefix": "--"
+  )
+  "setup" (
+    "cssvars": true,
+    "debug": false,
+    "verbose-mod": false
   )
   "space" (
     "pf": 0.1rem,
@@ -202,11 +204,11 @@ Current available settings.
   "z-index" (
     "below": -1,
     "above": 1,
+    "navbar": 980,
     "dropdown-backdrop": 990,
-    "navbar": 1000,
     "dropdown": 1000,
+    "sticky": 1020,
     "fixed": 1030,
-    "sticky": 1030,
     "modal-backdrop": 1040,
     "modal": 1050,
     "popover": 1060,
