@@ -863,7 +863,7 @@ height: 2rem;</code></pre></div><h3 class="item__sub-heading">Used by</h3><ul cl
 	}
 
 	// update options
-	$mod-options: (&quot;mod&quot;: map-get($_namespace-mod, &quot;mod&quot;), &quot;verbose&quot;: false);
+	$mod-options: (&quot;mod&quot;: map-get($_namespace-mod, &quot;mod&quot;), &quot;verbose&quot;: get-setup(&quot;verbose-mod&quot;));
 	$options: update($mod-options, $options);
 
 	// create mod selector
@@ -1450,9 +1450,11 @@ $map: (
 	&quot;for-desktop-up&quot;: &quot;(min-width: 1300px)&quot;,
 	&quot;for-big-desktop-up&quot;: &quot;(min-width: 1800px)&quot;
 ) !global;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Variable map for media queries.</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#app-setup-mixin-settings"><code>settings</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#helper-mixin-media"><code>media</code></a></li></ul></section><section class="main__item container item" id="vars-variable-_default-opacity"><h3 class="item__heading"><a class="item__name" href="#variable-_default-opacity">_default-opacity</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$_default-opacity: (
+	&quot;visible&quot;: 1,
 	&quot;light&quot;: 0.7,
 	&quot;lighter&quot;: 0.5,
 	&quot;lightest&quot;: 0.3
+	&quot;hidden&quot;: 0
 ) !global;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Variable map for opacity.</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#app-setup-mixin-settings"><code>settings</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#helper-function-o"><code>o</code></a></li></ul></section><section class="main__item container item" id="vars-variable-_default-space"><h3 class="item__heading"><a class="item__name" href="#variable-_default-space">_default-space</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$_default-space: (
 	&quot;pf&quot;: 0.1rem,
 	&quot;base&quot;: 0.4rem,
@@ -1467,11 +1469,11 @@ $map: (
 ) !global;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Variable map for transition animations.</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#app-setup-mixin-settings"><code>settings</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#helper-function-t"><code>t</code></a></li></ul></section><section class="main__item container item" id="vars-variable-_default-z-index"><h3 class="item__heading"><a class="item__name" href="#variable-_default-z-index">_default-z-index</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$_default-z-index: (
 	&quot;below&quot;: -1,
 	&quot;above&quot;: 1,
+	&quot;navbar&quot;: 980,
 	&quot;dropdown-backdrop&quot;: 990,
-	&quot;navbar&quot;: 1000,
 	&quot;dropdown&quot;: 1000,
+	&quot;sticky&quot;: 1020,
 	&quot;fixed&quot;: 1030,
-	&quot;sticky&quot;: 1030,
 	&quot;modal-backdrop&quot;: 1040,
 	&quot;modal&quot;: 1050,
 	&quot;popover&quot;: 1060,
@@ -1557,8 +1559,9 @@ $map: (
 	&quot;is&quot;: false,
 	&quot;mod&quot;: false,
 	&quot;context&quot;: false,
+	&quot;cssvars&quot;: true,
 	&quot;debug&quot;: false,
-	&quot;cssvars&quot;: true
+	&quot;verbose-mod&quot;: false
 );</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Variable map for setup toggles.</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[variable]</span> <a href="#vars-variable-_setup"><code>_setup</code></a></li></ul></section><section class="main__item container item" id="vars-variable-_setup"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#variable-_setup">_setup</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$_setup: map-collect(
 	$_setup-namespace,
 	$_setup-toggles,
