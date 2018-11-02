@@ -175,7 +175,7 @@ Current available settings.
     "visible": 1,
     "light": 0.7,
     "lighter": 0.5,
-    "lightest": 0.3
+    "lightest": 0.3,
     "hidden": 0
   )
   "prefixes" (
