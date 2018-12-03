@@ -11,15 +11,20 @@
 		box-sizing: border-box;
 	}
 
-	html {
-		font-size: 62.5%;
-	}
-
 	html,
 	body {
 		height: 100%;
+	}
+
+	html {
+		font-family: ff("default");
+		font-size: 62.5%;
+		line-height: 1.15;
+		-webkit-text-size-adjust: 100%;
+	}
+
+	body {
 		margin: 0;
-		padding: 0;
 	}
 
 	// main color palette
