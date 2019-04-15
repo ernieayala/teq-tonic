@@ -1,14 +1,14 @@
 {
 	"author": "Ernie Ayala <teafortwo.ea@gmail.com>",
 	"bugs": {
-		"url": "https://github.com/ernieayala/teq/issues"
+		"url": "https://github.com/ernieayala/teq-tonic/issues"
 	},
 	"description": "A neat Sass tool set",
 	"eyeglass": {
 		"needs": "*",
 		"exports": "eyeglass-exports.js"
 	},
-	"homepage": "https://ernieayala.github.io/teq/",
+	"homepage": "https://ernieayala.github.io/teq-tonic/",
 	"keywords": [
 		"css",
 		"eyeglass-module",
@@ -19,17 +19,17 @@
 	],
 	"license": "MIT",
 	"main": "index.js",
-	"name": "teq",
+	"name": "teq-tonic",
 	"readme": "./README.md",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/ernieayala/teq.git"
+		"url": "git+https://github.com/ernieayala/teq-tonic.git"
 	},
 	"scripts": {
 		"cleanInstall": "rm -rf ./node_modules ./package-lock.json && npm i",
 		"docs": "sassdoc core"
 	},
-	"style": "core/_teq.scss",
-	"title": "Teq Tools",
-	"version": "1.0.0"
+	"style": "core/_teq-tonic.scss",
+	"title": "Teq-Tonic Tools",
+	"version": "1.3.0"
 }

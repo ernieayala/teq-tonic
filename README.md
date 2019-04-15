@@ -1,28 +1,28 @@
-# Teq Tools
+# Teq-Tonic Tools
 
 ## Table of Contents
 
 1. [Using This Package In A Project](#using-this-package-in-a-project)
 2. [Folder Structure](#folder-structure)
-3. [SASS Docs](https://ernieayala.github.io/teq/)
+3. [SASS Docs](https://ernieayala.github.io/teq-tonic/)
 
 
 ## Using This Package In A Project
 
-Install [`teq`](https://www.npmjs.com/package/teq) into your project.
+Install [`teq-tonic`](https://www.npmjs.com/package/teq-tonic) into your project.
 
 ```
-npm i teq
+npm i teq-tonic
 ```
 
-Import teq into your project using [`Eyeglass`](https://github.com/sass-eyeglass/eyeglass). You can view how Eyeglass works by checking out the [`example`](https://github.com/ernieayala/teq-example) project.
+Import teq-tonic into your project using [`Eyeglass`](https://github.com/sass-eyeglass/eyeglass). You can view how Eyeglass works by checking out the [`example`](https://github.com/ernieayala/teq-tonic-example) project.
 
 ```sass
-@import "teq";
+@import "teq-tonic";
 ```
 
 Define settings for your project. You should only need *one* `settings` include.
-View the [`settings`](https://ernieayala.github.io/teq/#app-setup-mixin-settings) mixin for more details.
+View the [`settings`](https://ernieayala.github.io/teq-tonic/#app-setup-mixin-settings) mixin for more details.
 
 Current available settings.
 ``` sass
@@ -180,8 +180,8 @@ Current available settings.
   )
   "prefixes" (
     "prefix": "teq-",
-    "child-prefix": "__",
-    "modifier-prefix": "--"
+    "child-prefix": "-",
+    "modifier-prefix": "_"
   )
   "setup" (
     "cssvars": true,
@@ -254,4 +254,4 @@ Of course you can combine both of these.
 
 ## SASS Docs
 
-[`Documentation for the tools.`](https://ernieayala.github.io/teq/)
+[`Documentation for the tools.`](https://ernieayala.github.io/teq-tonic/)

@@ -1,7 +1,7 @@
-var teq = require("./index");
+var teqTonic = require("./index");
 
 module.exports = function(eyeglass, sass) {
 	return {
-		sassDir: teq.includePaths[0]
+		sassDir: teqTonic.includePaths[0]
 	};
 };
