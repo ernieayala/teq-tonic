@@ -1,7 +1,7 @@
 ///
-/// Outputs correct child elements when using inside of a host mixin.
+/// Outputs correct child elements.
 /// @name child
-/// @group shadow-dom
+/// @group builder
 /// @param {map} $selectors [()] - Input a list of selectors.
 /// @example scss
 ///   @include component("alert") {
@@ -10,7 +10,7 @@
 ///   }
 ///
 ///   // output
-///   .sample-alert__container
+///   .sample-alert-container
 /// @require {function} get-setup
 /// @require {mixin} toggle
 ///

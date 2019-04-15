@@ -9,7 +9,7 @@
 		"color": "Color",
 		"helper": "Helpers",
 		"placeholder": "Placeholders",
-		"shadow-dom": "ShadowDom",
+		"builder": "Builder",
 		"support": "Support",
 		"wcag": "WCAG",
 		"util-class": "Util Classes",

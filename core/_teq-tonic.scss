@@ -49,14 +49,14 @@
 @import "placeholders/clearfix";
 @import "placeholders/reset-list";
 
-// ShadowDom
-@import "shadow-dom/child";
-@import "shadow-dom/component";
-@import "shadow-dom/context";
-@import "shadow-dom/host-context";
-@import "shadow-dom/host-modifier";
-@import "shadow-dom/modifiers";
-@import "shadow-dom/nested";
+// Builder
+@import "builder/child";
+@import "builder/component";
+@import "builder/context";
+@import "builder/host-context";
+@import "builder/host-modifier";
+@import "builder/modifiers";
+@import "builder/nested";
 
 // WCAG
 @import "support-wcag/wcag";

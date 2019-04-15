@@ -6,7 +6,7 @@
 ///   @include base;
 ///
 
-@mixin base() {
+@mixin base {
 	* {
 		box-sizing: border-box;
 	}

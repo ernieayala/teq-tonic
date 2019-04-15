@@ -1,7 +1,7 @@
 ///
 /// Outputs correct nested elements when using inside of a host mixin.
 /// @name nested
-/// @group shadow-dom
+/// @group builder
 /// @param {map} $selectors [()] - Input a list of selectors.
 /// @example scss
 ///   @include component("popover") {
