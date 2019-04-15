@@ -3,6 +3,9 @@
 	"bugs": {
 		"url": "https://github.com/ernieayala/teq-tonic/issues"
 	},
+	"dependencies": {
+		"sass": "1.18.0"
+	},
 	"description": "A neat Sass tool set",
 	"eyeglass": {
 		"needs": "*",
@@ -31,5 +34,5 @@
 	},
 	"style": "core/_teq-tonic.scss",
 	"title": "Teq-Tonic Tools",
-	"version": "1.3.1"
+	"version": "1.3.2"
 }
