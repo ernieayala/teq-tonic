@@ -33,10 +33,10 @@ Current available settings.
     "slow": 0.5s
   )
   "border-radius" (
-    "xs": 0.1rem,
-    "sm": 0.2rem,
-    "md": 0.3rem,
-    "lg": 0.4rem
+    "xs": 1px,
+    "sm": 2px,
+    "md": 3px,
+    "lg": 4px
   )
   "color" (
     "black": #000000,
@@ -136,15 +136,15 @@ Current available settings.
     )
   )
   "font-sizes" (
-    "xxxl": 2.4rem,
-    "xxl": 2rem,
-    "xl": 1.8rem,
-    "lg": 1.6rem,
-    "md": 1.4rem,
-    "sm": 1.2rem,
-    "xs": 1rem,
-    "xxs": 0.8rem,
-    "default": 1.4rem
+    "xxxl": to-rem(24px),
+    "xxl": to-rem(20px),
+    "xl": to-rem(18px),
+    "lg": to-rem(16px),
+    "md": to-rem(14px),
+    "sm": to-rem(12px),
+    "xs": to-rem(10px),
+    "xxs": to-rem(8px),
+    "default": to-rem(16px)
   )
   "font-family" (
     "regular": "\"SourceSansPro\", \"Helvetica Neue\", \"Helvetica\", Arial, sans-serif",
@@ -189,13 +189,13 @@ Current available settings.
     "verbose-mod": false
   )
   "space" (
-    "pf": 0.1rem,
-    "base": 0.4rem,
-    "xs": 0.2rem,
-    "sm": 0.8rem,
-    "md": 1.6rem,
-    "lg": 2.4rem,
-    "xl": 3.2rem
+    "pf": to-rem(1px),
+    "base": to-rem(4px),
+    "xs": to-rem(2px),
+    "sm": to-rem(8px),
+    "md": to-rem(16px),
+    "lg": to-rem(24px),
+    "xl": to-rem(32px)
   )
   "transitions" (
     "link": cubic-bezier(0.075, 0.820, 0.165, 1.000),
