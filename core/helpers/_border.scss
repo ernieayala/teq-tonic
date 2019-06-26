@@ -3,19 +3,19 @@
 /// @name b
 /// @group helper
 /// @param {string} $color [null] - Choose a border color from the color palette or a custom color.
-/// @param {number} $size [0.1rem] - Choose the border thickness.
+/// @param {number} $size [1px] - Choose the border thickness.
 /// @param {map} $palette [$_palette-default] - Change which palette the color call is to.
 /// @example
 ///   border: b("green-500");
-///   border-top: b(#666666, 0.5rem);
+///   border-top: b(#666666, 5px);
 ///
 ///   // output
-///   border: rgba(var(--color-green-500), 1) 0.1rem solid;
-///   border-top: #666666 0.5rem solid;
+///   border: rgba(var(--color-green-500), 1) 1px solid;
+///   border-top: #666666 5px solid;
 /// @require {function} color
 ///
 
-@function b($color: null, $size: 0.1rem, $palette: $_palette-default) {
+@function b($color: null, $size: 1px, $palette: $_palette-default) {
 	@if not $color {
 		@warn "No border color value entered. Property omitted.";
 		@return null;

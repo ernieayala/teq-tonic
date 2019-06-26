@@ -54,10 +54,10 @@
 /// @param {number} $opacity [1] - Change the opacity of the color.
 /// @param {map} $palette [$_palette-default] - Change which palette the color call is to.
 /// @example scss
-///   box-shadow: shadow("charcoal-500") 0.1rem 0.1rem 0.5rem;
+///   box-shadow: shadow("charcoal-500");
 ///
 ///   // output
-///   box-shadow: rgba(41, 62, 64, 1) 0.1rem 0.1rem 0.5rem;
+///   box-shadow: rgba(41, 62, 64, 1);
 /// @require {variable} $_palette-default
 ///
 

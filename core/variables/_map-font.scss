@@ -5,15 +5,15 @@
 ///
 
 $_font-sizes: (
-	"xxxl": 2.4rem,
-	"xxl": 2rem,
-	"xl": 1.8rem,
-	"lg": 1.6rem,
-	"md": 1.4rem,
-	"sm": 1.2rem,
-	"xs": 1rem,
-	"xxs": 0.8rem,
-	"default": 1.4rem
+	"xxxl": to-rem(24px),
+	"xxl": to-rem(20px),
+	"xl": to-rem(18px),
+	"lg": to-rem(16px),
+	"md": to-rem(14px),
+	"sm": to-rem(12px),
+	"xs": to-rem(10px),
+	"xxs": to-rem(8px),
+	"default": to-rem(16px)
 ) !global;
 
 ///

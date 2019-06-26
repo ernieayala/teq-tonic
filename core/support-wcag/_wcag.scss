@@ -219,7 +219,7 @@
 	@if unit($value) == "px" {
 		$pt: ($size * 72 / 96);
 	} @else if unit($value) == "rem" {
-		$pt: (($size * 10) * 72 / 96);
+		$pt: (($size * 16) * 72 / 96);
 	}
 
 	@if $pt >= 18 {

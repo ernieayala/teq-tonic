@@ -34,8 +34,8 @@
 /// @param {array} $values [null] - A list of values.
 /// @example scss
 ///   @include settings(
-///     "space" (
-///       "base": 0.5rem
+///     "animation-time" (
+///       "slow": 5s
 ///     )
 ///   );
 /// @require {variable} $_contexts

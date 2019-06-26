@@ -1,0 +1,18 @@
+///
+/// The basic width and height output.
+/// @name to-rem
+/// @group helper
+/// @param {number} $value [null] - Value to set to rem.
+/// @param {number} $base [16px] - Base size for the browser.
+/// @example scss
+///   font: to-rem(16px);
+///
+///   // output
+///   font: 1rem;
+///
+
+@function to-rem($value: null, $base: 16px) {
+	$rem: strip-unit($value) / $base;
+
+	@return #{$rem}rem;
+}

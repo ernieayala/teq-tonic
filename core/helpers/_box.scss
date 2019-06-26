@@ -4,10 +4,10 @@
 /// @group helper
 /// @param {list} $values [null] - Choose space values.
 /// @example
-///   margin: box("sm" "md" 0.1rem);
+///   margin: box("sm" "md" to-rm(1px));
 ///
 ///   // output
-///   margin: 0.8rem 1.2rem 0.1rem;
+///   margin: 0.5rem 0.75rem 0.06rem;
 /// @require {function} space
 /// @require {variable} $_default-space
 ///

@@ -9,8 +9,8 @@
 ///   font: f("md", "semibold");
 ///
 ///   // output
-///   font: 1.4rem "SourceSansPro", "Helvetica Neue", "Helvetica", Arial, sans-serif;
-///   font: 1.4rem "SourceSansProSemibold", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+///   font: 1rem "SourceSansPro", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+///   font: 1rem "SourceSansProSemibold", "Helvetica Neue", "Helvetica", Arial, sans-serif;
 /// @require {variable} $_font-sizes
 /// @require {variable} $_font-family
 ///
@@ -39,7 +39,7 @@
 ///   font-size: fs("md");
 ///
 ///   // output
-///   font-size: 1.4rem;
+///   font-size: 1rem;
 /// @require {variable} $_font-sizes
 ///
 
