@@ -11,8 +11,9 @@
 ///   font: 1rem;
 ///
 
-@function to-rem($value: null, $base: 16px) {
-	$rem: strip-unit($value) / $base;
+@function to-rem($value: null, $base: 16) {
+	$value: strip-unit($value);
+	$rem: $value / $base;
 
 	@return #{$rem}rem;
 }
