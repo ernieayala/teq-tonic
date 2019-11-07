@@ -1247,8 +1247,8 @@ $map: (
 		float: right !important;
 	}
  }" data-collapsed="@mixin util-float() { ... }"><code>@mixin util-float() { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Builds float util classes.</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#helper-function-class"><code>class</code></a></li></ul></section><section class="main__item container item" id="util-class-mixin-util-font"><h3 class="item__heading"><a class="item__name" href="#mixin-util-font">util-font</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin util-font() { 
-	#{class(&quot;util&quot;) + &quot;-fs-xxs&quot;} {
-		font-size: fs(&quot;xxs&quot;) !important;
+	#{class(&quot;util&quot;) + &quot;-fs-2xs&quot;} {
+		font-size: fs(&quot;2xs&quot;) !important;
 	}
 
 	#{class(&quot;util&quot;) + &quot;-fs-xs&quot;} {
@@ -1271,12 +1271,12 @@ $map: (
 		font-size: fs(&quot;xl&quot;) !important;
 	}
 
-	#{class(&quot;util&quot;) + &quot;-fs-xxl&quot;} {
-		font-size: fs(&quot;xxl&quot;) !important;
+	#{class(&quot;util&quot;) + &quot;-fs-2xl&quot;} {
+		font-size: fs(&quot;2xl&quot;) !important;
 	}
 
-	#{class(&quot;util&quot;) + &quot;-fs-xxxl&quot;} {
-		font-size: fs(&quot;xxxl&quot;) !important;
+	#{class(&quot;util&quot;) + &quot;-fs-3xl&quot;} {
+		font-size: fs(&quot;3xl&quot;) !important;
 	}
 
 	#{class(&quot;util&quot;) + &quot;-fw-regular&quot;} {
@@ -1491,14 +1491,14 @@ $map: (
 	&quot;popover&quot;: 1060,
 	&quot;tooltip&quot;: 1070
 ) !global;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Variable map for z-indexs.</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#app-setup-mixin-settings"><code>settings</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#helper-function-z"><code>z</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#util-class-mixin-util-z-index"><code>util-z-index</code></a></li></ul></section><section class="main__item container item" id="vars-variable-_font-sizes"><h3 class="item__heading"><a class="item__name" href="#variable-_font-sizes">_font-sizes</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$_font-sizes: (
-	&quot;xxxl&quot;: to-rem(24px),
-	&quot;xxl&quot;: to-rem(20px),
+	&quot;3xl&quot;: to-rem(24px),
+	&quot;2xl&quot;: to-rem(20px),
 	&quot;xl&quot;: to-rem(18px),
 	&quot;lg&quot;: to-rem(16px),
 	&quot;md&quot;: to-rem(14px),
 	&quot;sm&quot;: to-rem(12px),
 	&quot;xs&quot;: to-rem(10px),
-	&quot;xxs&quot;: to-rem(8px),
+	&quot;2xs&quot;: to-rem(8px),
 	&quot;default&quot;: to-rem(16px)
 ) !global;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Variable map for font sizes.</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#app-setup-mixin-settings"><code>settings</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#helper-function-f"><code>f</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#helper-function-fs"><code>fs</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#wcag-function-wcag"><code>wcag</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#wcag-function-wcag-font-size"><code>wcag-font-size</code></a></li></ul></section><section class="main__item container item" id="vars-variable-_font-family"><h3 class="item__heading"><a class="item__name" href="#variable-_font-family">_font-family</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$_font-family: (
 	&quot;regular&quot;: &quot;\&quot;SourceSansPro\&quot;, \&quot;Helvetica Neue\&quot;, \&quot;Helvetica\&quot;, Arial, sans-serif&quot;,

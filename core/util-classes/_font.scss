@@ -8,8 +8,8 @@
 ///
 
 @mixin util-font {
-	#{class("util") + "-fs-xxs"} {
-		font-size: fs("xxs") !important;
+	#{class("util") + "-fs-2xs"} {
+		font-size: fs("2xs") !important;
 	}
 
 	#{class("util") + "-fs-xs"} {
@@ -32,12 +32,12 @@
 		font-size: fs("xl") !important;
 	}
 
-	#{class("util") + "-fs-xxl"} {
-		font-size: fs("xxl") !important;
+	#{class("util") + "-fs-2xl"} {
+		font-size: fs("2xl") !important;
 	}
 
-	#{class("util") + "-fs-xxxl"} {
-		font-size: fs("xxxl") !important;
+	#{class("util") + "-fs-3xl"} {
+		font-size: fs("3xl") !important;
 	}
 
 	#{class("util") + "-fw-regular"} {
