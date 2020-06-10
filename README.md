@@ -4,7 +4,6 @@
 
 1. [Using This Package In A Project](#using-this-package-in-a-project)
 2. [Folder Structure](#folder-structure)
-3. [SASS Docs](https://ernieayala.github.io/teq-tonic/)
 
 
 ## Using This Package In A Project
@@ -20,9 +19,6 @@ Import teq-tonic into your project using [`Eyeglass`](https://github.com/sass-ey
 ```sass
 @import "teq-tonic";
 ```
-
-Define settings for your project. You should only need *one* `settings` include.
-View the [`settings`](https://ernieayala.github.io/teq-tonic/#app-setup-mixin-settings) mixin for more details.
 
 Current available settings.
 ``` sass
@@ -251,7 +247,3 @@ Of course you can combine both of these.
 
 * [`core`](./core) - Source files being developed.
 * [`docs`](./docs) - Sass function, mixin, and variable documentation.
-
-## SASS Docs
-
-[`Documentation for the tools.`](https://ernieayala.github.io/teq-tonic/)
